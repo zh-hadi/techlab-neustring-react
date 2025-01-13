@@ -2,6 +2,7 @@ import React from 'react'
 import { useContext, useEffect } from 'react'
 import { ColorContext } from '../App'
 import { useLocation } from 'react-router-dom'
+import '../animation.css'
 
 const SolutionPage = () => {
 
@@ -17,9 +18,27 @@ const SolutionPage = () => {
 
 
   return (
-    <div>
+
+
+    <div className='h-screen w-full flex '>
+
+      <div className='flex-1'></div>
       
+      <div className='flex-1 w-[400px] h-[400px] hover:translate-x-6  duration-300 hover:scale-110'>
+
+
+        <div className="relative w-full h-full">
+  
+      <div class="blob"></div>
     </div>
+      </div>
+       
+      </div>
+
+
+
+      
+
   )
 }
 
