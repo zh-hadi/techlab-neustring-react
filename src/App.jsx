@@ -1,4 +1,4 @@
-import { 
+import {
   createBrowserRouter,
   RouterProvider,
   createRoutesFromElements,
@@ -9,13 +9,20 @@ import AboutPage from './pages/AboutPage';
 import SolutionPage from './pages/SolutionPage';
 import CommunityPage from './pages/CommunityPage';
 import ContactUsPage from './pages/ContactUsPage';
-import Layout from './components/Layout';  // Import the Layout
+import Layout from './components/Layout';
+import { createContext, useState, useContext } from 'react';
+
+
+const colorData = [];
+
+export const ColorContext = createContext();
+
 
 // Define your routes using createBrowserRouter
 const routesConfig = [
   {
     path: "/",
-    element: <Layout />,  // Layout wraps all pages
+    element: <Layout />, // Layout wraps all pages
     children: [
       { path: 'home', element: <HomePage /> },
       { path: 'about', element: <AboutPage /> },
@@ -28,7 +35,6 @@ const routesConfig = [
 
 // Create the router
 const router = createBrowserRouter(
-  
   createRoutesFromElements(
     routesConfig.map(({ path, element, children }) => (
       <Route key={path} path={path} element={element}>
@@ -41,9 +47,18 @@ const router = createBrowserRouter(
 );
 
 const App = () => {
- 
-  return <RouterProvider router={router} />;
-  // return <HomePage />;
+  const [color, setColor] = useState(colorData); // Default color
+
+
+  
+
+  return (
+    <ColorContext.Provider value={{ color, setColor }}>
+
+        <RouterProvider router={router} />
+
+    </ColorContext.Provider>
+  );
 };
 
 export default App;

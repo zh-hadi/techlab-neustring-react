@@ -1,10 +1,27 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import mouseIcon from '../assets/mouse-icon.svg';
+import { ColorContext } from '../App';
+import { useLocation } from 'react-router-dom';
+
+
 
 const HomePage = () => {
-    console.log('this is HomePage')
+  
+
+  const { color, setColor } = useContext(ColorContext);
+  const location = useLocation();
+  
+
+  useEffect(() => {
+
+    
+    setColor( ['red', 'image']);  
+
+  }, [setColor, location]);
+
+
   return (
-    <div className='w-full flex  flex-col justify-between items-center'>
+    <div className='w-full flex  flex-col justify-between items-center '>
       <div className='flex flex-col justify-center items-center w-3/5 gap-5 flex-1'>
             <h1 className='text-[68px] font-bold text-white text-center'>Transforming Telecom Analytics with NeuString</h1>
             <p className='text-white opacity-50 text-center text-base'>Experience the future of telecom with NeuString. Harness the power of Co-Pilot Intelligence to automate tasks, QuickSight Insights to visualize critical data, and Secure Collaboration to empower teams.</p>

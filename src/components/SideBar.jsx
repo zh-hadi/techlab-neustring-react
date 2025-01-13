@@ -2,6 +2,7 @@ import {React, useState} from 'react'
 import poweredBy from '../assets/power-by.png'
 import { NavLink } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import { useLocation } from 'react-router-dom';
 
 const SideBar = () => {
     const [active, setActive] = useState(true);
@@ -12,6 +13,10 @@ const SideBar = () => {
         isActive ? "h-2 w-2 bg-red-500": 'hidden';
 
     console.log(linkClass)
+
+
+    const location = useLocation();
+    console.log(location.pathname)
 
   return (
     <div className='w-[300px] flex flex-col justify-between absolute top-0 bottom-0'>
@@ -48,10 +53,12 @@ const SideBar = () => {
   
  
         </div>
+        { location.pathname === '/home' &&
         <div>
             <h3 className='text-white'>Powered by</h3>
             <img className='bg-slate-800 px-3 py-2 rounded-md' src={poweredBy} alt="" />
         </div>
+        }
     </div>
   )
 }
