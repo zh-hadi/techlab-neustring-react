@@ -39,7 +39,7 @@ const Layout = () => {
       <div
         className={`${
           color[color.length - 1] === 'class' ? color[0] : ''
-        } h-screen w-full flex flex-col px-10 pt-5 absolute top-0 left-0 z-0`}
+        }  h-screen w-full flex flex-col px-10 pt-5 absolute top-0 left-0 z-0`}
         style={color[color.length - 1] === 'style' ? { background: color[0] } : backgroundStyle}
       >
         <div className="px-5 py-2 bg-gradient-to-r from-[rgba(255,255,255,0.4)] to-[rgba(255,255,255,0.2)] w-3/5 mx-auto flex items-center justify-between rounded-lg">
