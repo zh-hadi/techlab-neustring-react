@@ -23,7 +23,7 @@ const AboutPage = () => {
 
 
       <div className='flex-1 flex items-center justify-center'>
-        <img src={HeroImage} alt="" />
+        <img className='h-full' src={HeroImage} alt="" />
       </div>
       <div className='items-center flex-1 w-3/5 flex justify-end'>
         <div className="flex flex-col text-left gap-5 w-4/5">
