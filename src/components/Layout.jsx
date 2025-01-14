@@ -21,14 +21,14 @@ const Layout = () => {
     <>
       {/* Conditional video background rendering */}
       {isVideoBackground && (
-        <div className='h-full w-full z-50'>
-          <div className="relative h-full w-full">
-              <video autoPlay loop muted className="video-bg">
+        <div className='h-screen w-full z-50'>
+          <div className="relative h-screen w-full">
+              <video autoPlay loop muted className="video-bg h-screen w-full object-cover">
                 <source src={HeroVideo} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
               <div className='absolute top-0  right-0 bottom-0 left-0 bg-[#0E2C4699]'></div>
-                <img className='absolute  bottom-5  right-5 ' src={NeuStringSideLogo} alt="" />
+              <img className='absolute  bottom-5  right-5 ' src={NeuStringSideLogo} alt="" />
 
           </div>
           

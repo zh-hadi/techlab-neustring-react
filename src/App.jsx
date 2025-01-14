@@ -2,7 +2,8 @@ import {
   createBrowserRouter,
   RouterProvider,
   createRoutesFromElements,
-  Route
+  Route,
+  Navigate
 } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
@@ -18,12 +19,12 @@ const colorData = [];
 export const ColorContext = createContext();
 
 
-// Define your routes using createBrowserRouter
 const routesConfig = [
   {
     path: "/",
     element: <Layout />, // Layout wraps all pages
     children: [
+      { index: true, element: <Navigate to="/home" replace /> }, // Redirect `/` to `/home`
       { path: 'home', element: <HomePage /> },
       { path: 'about', element: <AboutPage /> },
       { path: 'solution', element: <SolutionPage /> },
