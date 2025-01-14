@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { ColorContext } from '../App'
 import HeroImage from '../assets/about-page-phone.png'
 import activeIcon from '../assets/icon-active.svg'
-import PlayButton from '../assets/play.svg'
+import PlayButton from '../assets/Play.svg'
 import { useLocation } from 'react-router-dom'
 
 
