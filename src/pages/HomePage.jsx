@@ -15,7 +15,7 @@ const HomePage = () => {
   useEffect(() => {
 
     
-    setColor( ['red', 'image']);  
+    setColor( ['red', 'video']);  
 
   }, [setColor, location]);
 
