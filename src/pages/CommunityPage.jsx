@@ -29,7 +29,7 @@ const CommunityPage = () => {
   return (
     <>
 
-      <div 
+      <motion.div 
           className=' grid grid-cols-2 gap-10 w-4/6 h-[80vh]  mx-auto overflow-y-auto '
           style={{
             scrollbarWidth: "none",
@@ -98,7 +98,7 @@ const CommunityPage = () => {
         </div>
       
 
-      </div>
+      </motion.div>
     </>
 
   )
