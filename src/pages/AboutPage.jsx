@@ -8,27 +8,28 @@ import { useLocation } from 'react-router-dom'
 
 
 const motionLeft = {
-  // initial: {opacity: 0, x: -400},
+  initial: { opacity: 0 },
   animate: {
-    opacity: 1,
+    opacity: [0, 1, 1],
     x: [-300, 100, 0], 
     transition: {
-      duration: 2, 
-      times: [0, .5, 1], 
-      ease: "easeInOut", 
+      duration: 1, 
+      times: [0, 0.6, 1], 
+      ease: "easeIn", 
     },
   },
-}
+};
+
 
 const motionRight = {
-  // initial: {opacity: 0, x: 400},
+  initial: {opacity: 0},
   animate: {
-    opacity: 2,
+    opacity: [0, 1, 1],
     x: [300, -100, 0], 
     transition: {
-      duration: 2, 
-      times: [0, .5, 1],  
-      ease: "easeInOut", 
+      duration: 1, 
+      times: [0, .6, 1],  
+      ease: "easeIn", 
     },
   },
 }
@@ -66,7 +67,7 @@ const AboutPage = () => {
 
         initial='initial'
         animate='animate'
-        transition={{duration: 1}}
+      
         variants={motionRight}
       >
         <div className="flex flex-col text-left gap-5 w-4/5">
