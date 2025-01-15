@@ -5,6 +5,7 @@ import {
   Route,
   Navigate
 } from 'react-router-dom';
+import { AnimatePresence } from "framer-motion";
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import SolutionPage from './pages/SolutionPage';
@@ -54,11 +55,15 @@ const App = () => {
   
 
   return (
+      <AnimatePresence mode="wait">
     <ColorContext.Provider value={{ color, setColor }}>
+
 
         <RouterProvider router={router} />
 
+
     </ColorContext.Provider>
+      </AnimatePresence>
   );
 };
 
