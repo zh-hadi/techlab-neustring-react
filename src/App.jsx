@@ -17,7 +17,9 @@ import { createContext, useState, useContext } from 'react';
 
 const colorData = [];
 
+
 export const ColorContext = createContext();
+
 
 
 const routesConfig = [
@@ -49,20 +51,23 @@ const router = createBrowserRouter(
 );
 
 const App = () => {
-  const [color, setColor] = useState(colorData); // Default color
+  const [color, setColor] = useState(colorData); 
 
 
-  
 
   return (
       <AnimatePresence mode="wait">
-    <ColorContext.Provider value={{ color, setColor }}>
+
+      
+
+          <ColorContext.Provider value={{ color, setColor }}>
 
 
-        <RouterProvider router={router} />
+              <RouterProvider router={router} />
 
 
-    </ColorContext.Provider>
+          </ColorContext.Provider>
+  
       </AnimatePresence>
   );
 };

@@ -2,9 +2,9 @@ import React from 'react';
 import { AnimatePresence,motion } from 'framer-motion';
 import logo from '../assets/logo.png';
 import SideBar from '../components/SideBar';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { ColorContext } from '../App';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import HeroImage from '../assets/hero2.png';
 import HeroVideo from '../assets/hero-video.mp4';
 import NeuStringSideLogo from '../assets/neu-string-side-logo.png';
@@ -12,7 +12,7 @@ import NeuStringSideLogo from '../assets/neu-string-side-logo.png';
 
 const pageVariants = {
   initial: { y: "100%", opacity: 0 },
-  animate: { y: 0, opacity: 1 },
+  animate: { y: [0, -30, 0], opacity: 1 },
   exit: { y: "-100%", opacity: 0 },
 };
 
@@ -20,15 +20,36 @@ const Layout = () => {
   const { color } = useContext(ColorContext);
   const location = useLocation();
 
-  // Determine the background style conditionally
+
   const isVideoBackground = color[color.length - 1] === 'video';
   const backgroundStyle = isVideoBackground
-    ? {}  // Empty if video background
+    ? {}  
     : { backgroundImage: `url(${HeroImage})`, backgroundSize: 'cover', backgroundPosition: 'center' };
+
+
+
+    const navigate = useNavigate();
+
+    const routes = ["/home", "/about", "/solution", "/community", "/contact"];
+
+    const handleScreenClick = () => {
+      const currentIndex = routes.findIndex((route) => route === location.pathname);
+      const nextIndex = (currentIndex + 1) % routes.length; 
+      navigate(routes[nextIndex]);
+    };
+
+
+    const [solutionIndex, setSolutionIndex] = useState(0);
+
+    const handelSolutionIndex = () => {
+      setSolutionIndex(solutionIndex + 1);
+    }
+
+
 
   return (
     <>
-      {/* Conditional video background rendering */}
+ 
       {isVideoBackground && (
         <div className='h-screen w-full z-50'>
           <div className="relative h-screen w-full">
@@ -44,9 +65,10 @@ const Layout = () => {
         </div>
       )}
 
-      {/* Main container with dynamic background */}
+    
       <AnimatePresence mode="wait">
         <motion.div
+          onClick={handleScreenClick}
           className={`${
             color[color.length - 1] === 'class' ? color[0] : ''
           }  h-screen w-full flex flex-col px-10 pt-5 absolute top-0 left-0 z-0`}
@@ -57,7 +79,7 @@ const Layout = () => {
           animate="animate"
           exit="exit"
           variants={pageVariants}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
+          transition={{ duration: .5, ease: "easeInOut" }}
 
         >
           <div className="px-5 py-2 bg-gradient-to-r from-[rgba(255,255,255,0.4)] to-[rgba(255,255,255,0.2)] w-3/5 mx-auto flex items-center justify-between rounded-lg">
@@ -68,7 +90,7 @@ const Layout = () => {
           </div>
 
           <div className='w-full h-full px-10 pt-10 flex relative'>
-            <SideBar />
+            <SideBar handler={handelSolutionIndex}/>
             <Outlet />
           </div>
         </motion.div>

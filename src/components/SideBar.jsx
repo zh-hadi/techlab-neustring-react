@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import ActiveIcon from '../assets/icon-active.svg'
 import { useLocation } from 'react-router-dom'
 
-const SideBar = () => {
+const SideBar = ({handler}) => {
     const [active, setActive] = useState(true);
    
 
@@ -63,7 +63,7 @@ const SideBar = () => {
                }}
             </NavLink>
 
-            <NavLink to="/solution" className={linkClass}> 
+            <NavLink to="/solution" className={linkClass} onClick={handler}> 
                {({isActive}) => {
                 return (
                     <>
