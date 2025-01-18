@@ -13,6 +13,9 @@ import CommunityPage from './pages/CommunityPage';
 import ContactUsPage from './pages/ContactUsPage';
 import Layout from './components/Layout';
 import { createContext, useState, useContext } from 'react';
+import { PagesColorProvider } from './contexts/PagesColorContext'
+import { SolutionPageProvider} from './contexts/SolutionPageContext'
+import TestPage from './pages/TestPage';
 
 
 const colorData = [];
@@ -58,15 +61,21 @@ const App = () => {
   return (
       <AnimatePresence mode="wait">
 
-      
-
-          <ColorContext.Provider value={{ color, setColor }}>
 
 
-              <RouterProvider router={router} />
+                <SolutionPageProvider>
 
+                  <PagesColorProvider>
+                      <ColorContext.Provider key="111" value={{ color, setColor }}>
 
-          </ColorContext.Provider>
+                          <RouterProvider router={router} />
+
+                      </ColorContext.Provider>
+                      
+                  </PagesColorProvider>
+                </SolutionPageProvider>
+                
+
   
       </AnimatePresence>
   );

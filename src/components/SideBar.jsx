@@ -4,14 +4,15 @@ import { NavLink } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import ActiveIcon from '../assets/icon-active.svg'
 import { useLocation } from 'react-router-dom'
+import { useSolutionPageIndex } from '../contexts/SolutionPageContext'
 
-const SideBar = ({handler}) => {
+const SideBar = ({handler, linkColor}) => {
     const [active, setActive] = useState(true);
    
 
     const linkClass = ({ isActive }) => {
-        const baseClass = "font-montserrat font-bold flex gap items-center gap-1 text-[#82BC34]"
-        const isActiveClass = "ext-green-500 font-bold "
+        const baseClass = `font-montserrat font-bold flex gap items-center gap-1]`;
+        const isActiveClass = "text-green-500 font-bold "
         const notActiveClass = "font-normal"
 
         return isActive ? `${baseClass} ${isActiveClass}` : `${baseClass} ${notActiveClass}`
@@ -26,6 +27,17 @@ const SideBar = ({handler}) => {
     const location = useLocation();
     console.log(location.pathname)
 
+
+
+    const {solutionIndex, setSolutionIndex} = useSolutionPageIndex();
+    const incrementIndex = () => {
+        if(solutionIndex === 3){
+            setSolutionIndex(0);
+        }else{
+            setSolutionIndex((prevIndex) => prevIndex + 1);
+        }
+    }
+
   return (
     <div className='w-[300px] flex flex-col justify-between absolute top-0 bottom-0 z-20'>
         <div className='flex flex-col justify-center flex-1 gap-2'> 
@@ -33,7 +45,7 @@ const SideBar = ({handler}) => {
             {/* <NavLink>
                 hello
             </NavLink> */}
-            <NavLink to="/home" className={linkClass}> 
+            <NavLink to="/home" className={linkClass} style={{ color: linkColor}}> 
                 {({ isActive }) => {
                     return (
                     <>
@@ -48,7 +60,7 @@ const SideBar = ({handler}) => {
                 }}
             </NavLink>
 
-            <NavLink to="/about" className={linkClass}> 
+            <NavLink to="/about" className={linkClass} style={{ color: linkColor}}> 
                {({isActive})=> {
                 return (
                     <>
@@ -63,7 +75,7 @@ const SideBar = ({handler}) => {
                }}
             </NavLink>
 
-            <NavLink to="/solution" className={linkClass} onClick={handler}> 
+            <NavLink to="/solution" className={linkClass} style={{ color: linkColor}} onClick={incrementIndex}> 
                {({isActive}) => {
                 return (
                     <>
@@ -78,7 +90,7 @@ const SideBar = ({handler}) => {
                }}
             </NavLink>
 
-            <NavLink to="/community" className={linkClass}> 
+            <NavLink to="/community" className={linkClass} style={{ color: linkColor}}> 
                 {({isActive}) => {
                  return (
                       <>
@@ -93,7 +105,7 @@ const SideBar = ({handler}) => {
                 }}  
             </NavLink>
 
-            <NavLink to="/contact" className={linkClass}> 
+            <NavLink to="/contact" className={linkClass} style={{ color: linkColor}}> 
                 {({isActive}) => {
                  return (
                       <>

@@ -44,7 +44,7 @@ const AboutPage = () => {
 
   useEffect(() => {
 
-    setColor(['linear-gradient(to right, #f3eee8 50%, #cbd7fd 50%)', 'style']);
+    // setColor(['linear-gradient(to right, #f3eee8 50%, #cbd7fd 50%)', 'style']);
 
   }, [setColor, location])
 

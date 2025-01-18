@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { AnimatePresence,motion } from 'framer-motion';
 import logo from '../assets/logo.png';
 import SideBar from '../components/SideBar';
@@ -8,6 +8,8 @@ import { useContext, useState } from 'react';
 import HeroImage from '../assets/hero2.png';
 import HeroVideo from '../assets/hero-video.mp4';
 import NeuStringSideLogo from '../assets/neu-string-side-logo.png';
+import { usePageColors } from '../contexts/PagesColorContext';
+
 
 
 const pageVariants = {
@@ -45,8 +47,12 @@ const Layout = () => {
       setSolutionIndex(solutionIndex + 1);
     }
 
+    const pageColor = usePageColors();
 
+    const bgColor = pageColor.find(item => item.page === location.pathname.substring(1))?.color;
+    const navColor = pageColor.find(item => item.page === location.pathname.substring(1))?.navColor;
 
+    
   return (
     <>
  
@@ -68,11 +74,12 @@ const Layout = () => {
     
       <AnimatePresence mode="wait">
         <motion.div
-          onClick={handleScreenClick}
+          // onClick={handleScreenClick}
           className={`${
             color[color.length - 1] === 'class' ? color[0] : ''
           }  h-screen w-full flex flex-col px-10 pt-5 absolute top-0 left-0 z-0`}
-          style={color[color.length - 1] === 'style' ? { background: color[0] } : backgroundStyle}
+          // style={color[color.length - 1] === 'style' ? { background: homeColor } : backgroundStyle}
+          style={{ background: bgColor}}
 
           key={location.pathname}
           initial="initial"
@@ -90,7 +97,7 @@ const Layout = () => {
           </div>
 
           <div className='w-full h-full px-10 pt-10 flex relative'>
-            <SideBar handler={handelSolutionIndex}/>
+            <SideBar handler={handelSolutionIndex} linkColor={navColor}/>
             <Outlet />
           </div>
         </motion.div>
