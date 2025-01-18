@@ -89,7 +89,7 @@ const Layout = () => {
           transition={{ duration: .5, ease: "easeInOut" }}
 
         >
-          <div className="px-5 py-2 bg-gradient-to-r from-[rgba(255,255,255,0.4)] to-[rgba(255,255,255,0.2)] w-3/5 mx-auto flex items-center justify-between rounded-lg">
+          <div className="px-5 py-2 bg-gradient-to-r from-[rgba(255,255,255,0.4)] to-[rgba(255,255,255,0.2)] w-3/5 mx-auto flex items-center justify-between rounded-lg z-10">
             <a href="">
               <img className='w-[200px]' src={logo} alt="Logo" />
             </a>

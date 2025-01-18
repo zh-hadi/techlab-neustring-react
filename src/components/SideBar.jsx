@@ -31,7 +31,7 @@ const SideBar = ({handler, linkColor}) => {
 
     const {solutionIndex, setSolutionIndex} = useSolutionPageIndex();
     const incrementIndex = () => {
-        if(solutionIndex === 3){
+        if(solutionIndex === 6){
             setSolutionIndex(0);
         }else{
             setSolutionIndex((prevIndex) => prevIndex + 1);

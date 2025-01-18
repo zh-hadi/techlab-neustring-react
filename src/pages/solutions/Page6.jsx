@@ -1,14 +1,14 @@
 import {motion} from 'framer-motion'
 import PlaneIcon from '../../assets/planning-icon.svg'
 
-const Page3 = () => {
+const Page6 = () => {
 
     const data = {
-        plan: 'Planning',
-        title: 'Laying the Groundwork for Success',
-        description: 'Efficient planning is the cornerstone of successful wholesale roaming financial management. NeuString Analytics provides the tools to streamline your planning process and set the stage for optimal performance.',
+        plan: 'Closing',
+        title: 'Maximizing Efficiency in Deal Closure',
+        description: 'Digital transformation empowers organizations to optimize the final stages of wholesale financial management. Automating the Reconciliation and Settlement processes, including the review of Deal conditions and financial calculations, leads to faster, more accurate, and cost-effective deal closure.',
         image: '',
-        service: ['Forecasting', 'Financial Targets', 'Business Case']
+        service: ['Validation', 'Settlement', 'Evaluation']
     };
 
 
@@ -114,4 +114,4 @@ const Page3 = () => {
   )
 }
 
-export default Page3
+export default Page6

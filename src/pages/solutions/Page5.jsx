@@ -1,14 +1,14 @@
 import {motion} from 'framer-motion'
 import PlaneIcon from '../../assets/planning-icon.svg'
 
-const Page3 = () => {
+const Page5 = () => {
 
     const data = {
-        plan: 'Planning',
-        title: 'Laying the Groundwork for Success',
-        description: 'Efficient planning is the cornerstone of successful wholesale roaming financial management. NeuString Analytics provides the tools to streamline your planning process and set the stage for optimal performance.',
+        plan: 'Tracking',
+        title: 'Tracking and Optimizing Your Roaming Financial Performance',
+        description: 'Once Even the most meticulously planned and executed strategies can encounter unexpected challenges. To ensure that your wholesale roaming financial operations remain on track, robust tracking and benchmarking are essential.',
         image: '',
-        service: ['Forecasting', 'Financial Targets', 'Business Case']
+        service: ['Commitments', 'Targets', 'Traffic Anomalies', 'Accruals']
     };
 
 
@@ -114,4 +114,4 @@ const Page3 = () => {
   )
 }
 
-export default Page3
+export default Page5
