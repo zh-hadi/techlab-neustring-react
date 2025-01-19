@@ -31,7 +31,7 @@ const SolutionPage = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const pages = [Page2,  Page1, Page3, Page4, Page5, Page6, Page7];
+  const pages = [Page1,  Page2, Page3, Page4, Page5, Page6, Page7];
 
   // Use currentIndex to determine which page to render
   const CurrentPage = pages[solIndex.solutionIndex];

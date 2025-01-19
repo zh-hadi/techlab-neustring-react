@@ -2,6 +2,17 @@ import {motion} from 'framer-motion'
 import PlaneIcon from '../../assets/planning-icon.svg'
 import SolutionIcon from '../../assets/solutionIcon.svg'
 
+const pageVariants = {
+    initial: { y: "-100%", opacity: 0 }, 
+    animate: { 
+        y: ['105%', "-5%", 0], 
+        opacity: 1 
+      },
+      exit: { y: "-100%", opacity: 0 },
+};
+  
+  
+
 const Page2 = () => {
 
     const data = [
@@ -29,7 +40,13 @@ const Page2 = () => {
 
 
   return (
-    <div className=' w-4/5 mx-auto flex justify-between items-center'>
+    <motion.div 
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        variants={pageVariants}
+        transition={{ duration: 1, ease: "easeInOut" }}
+        className=' w-4/5 mx-auto flex justify-between items-center'>
 
 
         <div className='space-y-10'>
@@ -49,7 +66,7 @@ const Page2 = () => {
         </div>
 
 
-    </div>
+    </motion.div>
   )
 }
 

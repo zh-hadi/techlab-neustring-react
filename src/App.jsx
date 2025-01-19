@@ -7,6 +7,8 @@ import {
 } from 'react-router-dom';
 import { AnimatePresence } from "framer-motion";
 import HomePage from './pages/HomePage';
+import {GlobeDemo } from './pages/GlobeDemo';
+import GlobeReact from './pages/GlobeReact';
 import AboutPage from './pages/AboutPage';
 import SolutionPage from './pages/SolutionPage';
 import CommunityPage from './pages/CommunityPage';
@@ -31,7 +33,7 @@ const routesConfig = [
     element: <Layout />, // Layout wraps all pages
     children: [
       { index: true, element: <Navigate to="/home" replace /> }, // Redirect `/` to `/home`
-      { path: 'home', element: <HomePage /> },
+      { path: 'home', element: <HomePage  /> },
       { path: 'about', element: <AboutPage /> },
       { path: 'solution', element: <SolutionPage /> },
       { path: 'community', element: <CommunityPage /> },
