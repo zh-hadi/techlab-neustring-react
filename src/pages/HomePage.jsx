@@ -32,6 +32,7 @@ const HomePage = () => {
             <img src={mouseIcon} alt="" />
             <div className='text-white'>Scroll to view more</div>
       </div>
+
     </div>
   )
 }

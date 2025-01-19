@@ -9,6 +9,8 @@ import HeroImage from '../assets/hero2.png';
 import HeroVideo from '../assets/hero-video.mp4';
 import NeuStringSideLogo from '../assets/neu-string-side-logo.png';
 import { usePageColors } from '../contexts/PagesColorContext';
+import { useSolutionPageIndex } from '../contexts/SolutionPageContext';
+import ScrollPageHandler from "./ScrollPageHandler";
 
 
 
@@ -21,6 +23,10 @@ const pageVariants = {
 const Layout = () => {
   const { color } = useContext(ColorContext);
   const location = useLocation();
+
+  // solution page context
+
+  const solIndex = useSolutionPageIndex();
 
 
   const isVideoBackground = color[color.length - 1] === 'video';
@@ -49,8 +55,31 @@ const Layout = () => {
 
     const pageColor = usePageColors();
 
-    const bgColor = pageColor.find(item => item.page === location.pathname.substring(1))?.color;
-    const navColor = pageColor.find(item => item.page === location.pathname.substring(1))?.navColor;
+    let bgColor = pageColor.find(item => item.page === location.pathname.substring(1))?.color;
+    let navColor = pageColor.find(item => item.page === location.pathname.substring(1))?.navColor;
+
+    console.log(pageColor)
+
+    if('solution' === location.pathname.substring(1)){
+      console.log('solution pages is : ')
+      const solutionPage = pageColor.find(item => item.page === 'solution');
+
+
+      if (solutionPage) {
+        console.log(solutionPage.page); 
+        
+       
+        console.log('Solution sub-pages are:'+ solutionIndex);
+        console.log(solutionPage.pages[0]); 
+        console.log(solIndex.solutionIndex)
+        bgColor = solutionPage.pages[solIndex.solutionIndex].color;
+        navColor = solutionPage.pages[solIndex.solutionIndex].navColor;
+      } else {
+        console.log('Solution page is not found');
+      }
+    }else{
+      solIndex.setSolutionIndex(0)
+    }
 
     
   return (

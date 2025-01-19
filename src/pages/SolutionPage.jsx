@@ -11,19 +11,7 @@ import Page7 from './solutions/Page7';
 import { useSolutionPageIndex } from '../contexts/SolutionPageContext'
 
 const SolutionPage = () => {
-  // const { setColor } = useContext(ColorContext);
-  // const location = useLocation();
   
-  // useEffect(() => {
-  //   setColor(['linear-gradient(270deg, #C4BDF4 0%, #F0ECF8 100%)', 'style']);
-  // }, [setColor, location]);
-
-  // const cards = [
-  //   { title: 'Laying the Groundwork for Success', icon: 'aaaaaaaaaaaaa' },
-  //   { title: 'techlab 333', icon: 'aaaaaaaaaaaaa' },
-  //   { title: 'good morning', icon: 'aaaaaaaaaaaaa' },
-  //   { title: 'hello world', icon: 'aaaaaaaaaaaaa' },
-  // ];
 
   const solIndex = useSolutionPageIndex();
 
