@@ -35,7 +35,7 @@ const routesConfig = [
     element: <Layout />, // Layout wraps all pages
     children: [
       { index: true, element: <Navigate to="home" replace /> }, // Redirect `/` to `/home`
-      { path: 'home', element: <BlobAnimation  /> },
+      { path: 'home', element: <HomePage  /> },
       { path: 'about', element: <AboutPage /> },
       { path: 'solution', element: <SolutionPage /> },
       { path: 'community', element: <CommunityPage /> },
