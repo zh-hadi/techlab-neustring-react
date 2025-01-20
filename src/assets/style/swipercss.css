@@ -1,0 +1,46 @@
+/* Add custom icons */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  content: ''; /* Remove default Swiper arrows */
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: #82BC34; /* Green background */
+  border-radius: 50%; /* Make buttons round */
+  padding: 10px; /* Adjust padding for the round shape */
+  width: 40px; /* Set width */
+  height: 40px; /* Set height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Custom icon for "Next" */
+.swiper-button-next {
+  background-image: url('../right-arrow.svg'); 
+  background-size: 50%; /* Adjust icon size */
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Custom icon for "Prev" */
+.swiper-button-prev {
+  background-image: url('../left-arrow.svg');
+  background-size: 50%; /* Adjust icon size */
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Hover effect for buttons */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: #6FA02E; /* Slightly darker green on hover */
+}
+
+/* Disabled state styling */
+.swiper-button-disabled {
+  opacity: 0.5; /* Dim the button */
+  cursor: not-allowed;
+}

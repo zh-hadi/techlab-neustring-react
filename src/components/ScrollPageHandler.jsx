@@ -12,7 +12,7 @@ const ScrollPageHandler = () => {
     // Check if the user has reached the bottom of the page
     if (scrollPosition + windowHeight >= docHeight) {
       // Navigate to the contact page when the bottom is reached
-      navigate('/about');
+      navigate('/contact');
     }
   };
 

@@ -1,5 +1,6 @@
 import {motion} from 'framer-motion'
 import PlaneIcon from '../../assets/planning-icon.svg'
+import ExecutingBlob from '../../components/blob/ExecutingBlob';
 
 const Page4 = () => {
 
@@ -64,16 +65,7 @@ const Page4 = () => {
       >
         <div className='relative w-full h-full'>
             <div className='flex justify-center items-center w-full h-full'>
-            <svg width="428" height="405" viewBox="0 0 428 405" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M340.853 60.1307C309.593 -1.68739 231.198 15.0748 205.839 34.2379C130.812 -27.4399 75.7613 8.68238 37.9059 38.2304C0.0504487 67.7784 -8.82117 132.303 10.9015 162.223C57.6843 233.193 67.4149 224.148 18.6698 260.616C-30.0754 297.084 66.3869 469.24 197.331 378.614C282.974 319.341 353.874 375.78 384.871 330.897C415.868 286.015 455.276 138.452 399.296 135.59C343.317 132.728 379.927 137.403 340.853 60.1307Z" fill="url(#paint0_linear_1_3186)" />
-              <defs>
-                <linearGradient id="paint0_linear_1_3186" x1="-0.0230699" y1="89.2883" x2="384.668" y2="331.382" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#7F7FD5" />
-                  <stop offset="0.5" stop-color="#86A8E7" />
-                  <stop offset="1" stop-color="#91EAE4" />
-                </linearGradient>
-              </defs>
-            </svg>
+                <ExecutingBlob />
             </div>
             <div
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col p-10 justify-between "

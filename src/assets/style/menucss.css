@@ -1,0 +1,29 @@
+/* Menu item styling */
+.menu-item {
+    position: relative;
+    font-size: 18px; 
+    display: inline-block;
+    
+  }
+  
+  /* Add the custom shape as a 'before' effect */
+  .menu-item::before {
+    content: '';
+    position: absolute;
+    left: 0; /* Position it to the left of the text */
+    top: 50%; /* Center vertically */
+    
+    width: 10px; /* Adjust width of the shape */
+    height: 10px; /* Adjust height of the shape */
+   
+    border-radius: 0; /* Slight rounding for smooth edges */
+    clip-path: circle(50% at 100% 4%);
+  }
+  
+  .active-bar{
+    width: 10px; /* Adjust width of the shape */
+    height: 10px; /* Adjust height of the shape */
+   
+    border-radius: 0; /* Slight rounding for smooth edges */
+    clip-path: circle(50% at 100% 4%);
+  }

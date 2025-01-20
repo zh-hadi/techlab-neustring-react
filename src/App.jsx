@@ -9,6 +9,7 @@ import { AnimatePresence } from "framer-motion";
 import HomePage from './pages/HomePage';
 import {GlobeDemo } from './pages/GlobeDemo';
 import GlobeReact from './pages/GlobeReact';
+import BlobAnimation from './pages/BlobAnimation';
 import AboutPage from './pages/AboutPage';
 import SolutionPage from './pages/SolutionPage';
 import CommunityPage from './pages/CommunityPage';
@@ -17,7 +18,7 @@ import Layout from './components/Layout';
 import { createContext, useState, useContext } from 'react';
 import { PagesColorProvider } from './contexts/PagesColorContext'
 import { SolutionPageProvider} from './contexts/SolutionPageContext'
-import TestPage from './pages/TestPage';
+
 import ScrollPageHandler from "./components/ScrollPageHandler";
 
 
@@ -34,7 +35,7 @@ const routesConfig = [
     element: <Layout />, // Layout wraps all pages
     children: [
       { index: true, element: <Navigate to="home" replace /> }, // Redirect `/` to `/home`
-      { path: 'home', element: <HomePage  /> },
+      { path: 'home', element: <BlobAnimation  /> },
       { path: 'about', element: <AboutPage /> },
       { path: 'solution', element: <SolutionPage /> },
       { path: 'community', element: <CommunityPage /> },

@@ -5,3 +5,25 @@
 @tailwind utilities;
 
 
+/* Custom Swiper Navigation Colors */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #ff5722; /* Change default color to orange */
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: #ff9800; /* Change hover color */
+}
+
+/* Customize size (optional) */
+.swiper-button-next,
+.swiper-button-prev {
+  font-size: 1.5rem; /* Adjust icon size */
+}
+
+/* Customize disabled state (optional) */
+.swiper-button-disabled {
+  opacity: 0.5; /* Dim color for disabled buttons */
+  pointer-events: none;
+}

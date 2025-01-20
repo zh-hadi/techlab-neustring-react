@@ -1,5 +1,8 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { Carousel } from 'react-responsive-carousel';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
 import { useContext, useEffect } from 'react'
 import { ColorContext } from '../App'
 import { useLocation } from 'react-router-dom'
@@ -11,6 +14,10 @@ import CommunityImage from '../assets/community-image.png'
 import TeamMemberImage from '../assets/team-member.png'
 import CommunityThemeLogoImage from '../assets/community-theme-logo.png'
 import SunIcon from '../assets/sun-icon.svg'
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import '../assets/style/swipercss.css';
 
 
 const CommunityPage = () => {
@@ -30,7 +37,7 @@ const CommunityPage = () => {
     <>
 
       <motion.div 
-          className=' grid grid-cols-2 gap-10 w-4/6 h-[80vh]  mx-auto overflow-y-auto '
+          className=' grid grid-cols-2 gap-10 w-4/6   mx-auto overflow-y-auto '
           style={{
             scrollbarWidth: "none",
             msOverflowStyle: "none", 
@@ -82,10 +89,22 @@ const CommunityPage = () => {
           </div>
         </div>
         <div className="  bg-communtiy-head rounded-3xl col-span-2">
-          <div className='p-1 relative rounded-3xl'>
-            <img className='w-full rounded-3xl' src={TeamMemberImage} alt="" />
-            <h2 className='p-4 absolute bottom-10 left-10 text-white bg-gray-gradient text-4xl font-medium rounded-xl bg-opacity-50'>Guess who didnt had morning coffee ?</h2>
-          </div>
+
+        <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+          <SwiperSlide>
+            <div className='p-1 relative rounded-3xl'>
+              <img className='w-full rounded-3xl' src={TeamMemberImage} alt="" />
+              <h2 className='p-4 absolute bottom-10 left-10 text-white bg-gray-gradient text-4xl font-medium rounded-xl bg-opacity-50'>Guess who didnt had morning coffee ?</h2>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className='p-1 relative rounded-3xl'>
+              <img className='w-full rounded-3xl' src={TeamMemberImage} alt="" />
+              <h2 className='p-4 absolute bottom-10 left-10 text-white bg-gray-gradient text-4xl font-medium rounded-xl bg-opacity-50'>Guess who didnt had morning coffee ?</h2>
+            </div>
+          </SwiperSlide>
+          
+          </Swiper>
         </div>
 
         <div className="bg-gray-500 rounded-3xl col-span-2">

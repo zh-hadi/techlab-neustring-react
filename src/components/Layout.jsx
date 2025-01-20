@@ -4,7 +4,7 @@ import logo from '../assets/logo.png';
 import SideBar from '../components/SideBar';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { ColorContext } from '../App';
-import { useContext, useState } from 'react';
+import { useContext, useState, useRef, useEffect } from 'react';
 import HeroImage from '../assets/hero2.png';
 import HeroVideo from '../assets/hero-video.mp4';
 import NeuStringSideLogo from '../assets/neu-string-side-logo.png';
@@ -22,11 +22,14 @@ const pageVariants = {
 
 const Layout = () => {
   const { color } = useContext(ColorContext);
+  const [isScrolling, setIsScrolling] = useState(false);
+  const [timeoutId, setTimeoutId] = useState(null);
   const location = useLocation();
 
-  // solution page context
+
 
   const solIndex = useSolutionPageIndex();
+  
 
 
   const isVideoBackground = color[color.length - 1] === 'video';
@@ -40,11 +43,60 @@ const Layout = () => {
 
     const routes = ["/home", "/about", "/solution", "/community", "/contact"];
 
-    const handleScreenClick = () => {
-      const currentIndex = routes.findIndex((route) => route === location.pathname);
-      const nextIndex = (currentIndex + 1) % routes.length; 
-      navigate(routes[nextIndex]);
+    const handleScreenClick = (e) => {
+      console.log(e);
+      if (sidebarRef.current && sidebarRef.current.contains(e.target)) {
+        console.log('side bar clicked'+ sidebarRef.current)
+        return; // Prevent navigation if the click is inside the sidebar
+      }
+      if(location.pathname === '/solution' && solIndex.solutionIndex < 6) {
+        console.log(solIndex.solutionIndex);
+        solIndex.setSolutionIndex(solIndex.solutionIndex + 1)
+        exit()
+      }else{
+
+        solIndex.setSolutionIndex(0)
+        const currentIndex = routes.findIndex((route) => route === location.pathname);
+        const nextIndex = (currentIndex + 1) % routes.length; 
+        navigate(routes[nextIndex]);
+      }
     };
+
+    const sidebarRef = useRef(null);
+
+
+
+    const handleWheel = (event) => {
+      const { scrollY, innerHeight } = window;
+      const scrollHeight = document.documentElement.scrollHeight;
+    
+      if (event.deltaY > 0) {
+        // Scrolling Down
+        if (scrollY + innerHeight >= scrollHeight) {
+          // User is at the bottom of the page
+          if (location.pathname === '/solution' && solIndex.solutionIndex < 6) {
+            console.log(solIndex.solutionIndex);
+            solIndex.setSolutionIndex(solIndex.solutionIndex + 1);
+            exit(); // Exit animation or logic
+          } else {
+            solIndex.setSolutionIndex(0);
+            const currentIndex = routes.findIndex((route) => route === location.pathname);
+            const nextIndex = (currentIndex + 1) % routes.length;
+            navigate(routes[nextIndex]);
+          }
+        }
+      } else {
+        // Scrolling Up
+        if (scrollY === 0) {
+          // User is at the top of the page
+          const currentIndex = routes.findIndex((route) => route === location.pathname);
+          const prevIndex = (currentIndex - 1 + routes.length) % routes.length;
+          navigate(routes[prevIndex]);
+        }
+      }
+    };
+    
+
 
 
     const [solutionIndex, setSolutionIndex] = useState(0);
@@ -103,7 +155,8 @@ const Layout = () => {
     
       <AnimatePresence mode="wait">
         <motion.div
-          // onClick={handleScreenClick}
+          onClick={handleScreenClick}
+          onWheel={handleWheel}
           className={`${
             color[color.length - 1] === 'class' ? color[0] : ''
           }  h-screen w-full flex flex-col px-10 pt-5 absolute top-0 left-0 z-0`}
@@ -126,7 +179,9 @@ const Layout = () => {
           </div>
 
           <div className='w-full h-full px-10 pt-10 flex relative'>
-            <SideBar handler={handelSolutionIndex} linkColor={navColor}/>
+            <div ref={sidebarRef}>
+                <SideBar handler={handelSolutionIndex} linkColor={navColor} />
+            </div>
             <Outlet />
           </div>
         </motion.div>
