@@ -137,7 +137,7 @@ const Layout = () => {
   return (
     <>
  
-      {isVideoBackground && (
+      {isVideoBackground && location.pathname === '/home' && (
         <div className='h-screen w-full z-50'>
           <div className="relative h-screen w-full">
               <video autoPlay loop muted className="video-bg h-screen w-full object-cover">

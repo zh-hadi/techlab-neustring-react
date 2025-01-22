@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { ColorContext } from '../App'
 import { motion } from 'framer-motion'
 import HeroImage from '../assets/about-page-phone.png'
@@ -39,6 +39,7 @@ const motionRight = {
 
 
 const AboutPage = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
   const {setColor} = useContext(ColorContext)
   const location = useLocation();
 
@@ -49,7 +50,7 @@ const AboutPage = () => {
   }, [setColor, location])
 
   return (
-    <div className='w-full flex justify-evenly  relative z-0'>
+    <motion.div className='w-full flex justify-evenly  relative z-0'>
      
 
 
@@ -60,7 +61,7 @@ const AboutPage = () => {
         animate='animate'
         variants={motionLeft}
       >
-        <img className='h-full' src={HeroImage} alt="" />
+        <img className='h-full' src={HeroImage} alt="" onLoad={() => setIsLoaded(true)}/>
       </motion.div>
       <motion.div 
         className='items-center flex-1 w-3/5 flex justify-end'
@@ -99,7 +100,7 @@ const AboutPage = () => {
       </motion.div>
 
 
-    </div>
+    </motion.div>
   )
 }
 

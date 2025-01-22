@@ -64,20 +64,20 @@ const App = () => {
 
 
   return (
-      <AnimatePresence mode="wait">
-
-
-
-                <SolutionPageProvider>
+    
+    
+    
+    <SolutionPageProvider>
 
                   <PagesColorProvider>
                       <ColorContext.Provider key="111" value={{ color, setColor }}>
 
 
+                  <AnimatePresence mode="wait">
                           <RouterProvider router={router}>
-                        <ScrollPageHandler >
-                        </ScrollPageHandler>
+                      
                             </RouterProvider>
+                  </AnimatePresence>
 
                       </ColorContext.Provider>
                       
@@ -86,7 +86,6 @@ const App = () => {
                 
 
   
-      </AnimatePresence>
   );
 };
 
