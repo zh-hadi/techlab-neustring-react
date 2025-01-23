@@ -2,6 +2,11 @@ import {motion} from 'framer-motion'
 import PlaneIcon from '../../assets/planning-icon.svg'
 import GitHubGlobe from '../../components/GitHubGlobe';
 import mouseIcon from '../../assets/mouse-icon.svg';
+import mapearth from '../../assets/map-earth.png';
+// import Globe from 'react-globe.gl';
+
+
+import Globe from '../../components/Globe';
 
 
 const Page1 = () => {
@@ -22,7 +27,7 @@ const Page1 = () => {
         <motion.div 
           className='flex-1 flex flex-col gap-5 items-start'
         
-          initial={{ opacity: 0, x: -300 }}
+          initial={{ opacity: 0, x: -200 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
         >
@@ -38,13 +43,20 @@ const Page1 = () => {
         <motion.div 
           className='flex-1'
         
-          initial={{ opacity: 0, x: 300 }}
+          initial={{ opacity: 0, x: 200 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 0.5 }}
         >
 
           <div className='w-full h-[600px]'>
-            <GitHubGlobe color="green"/>
+          <Globe
+            // globeImageUrl="{mapearth}"
+            // // globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
+            // bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
+            // backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
+  />
+            {/* <GitHubGlobe color="red"/> */}
+            {/* <ReactGlobe /> */}
           </div>
           
         </motion.div>

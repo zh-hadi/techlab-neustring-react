@@ -1,6 +1,6 @@
 
 import { AnimatePresence,motion } from 'framer-motion';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo.svg';
 import SideBar from '../components/SideBar';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { ColorContext } from '../App';
@@ -15,9 +15,9 @@ import ScrollPageHandler from "./ScrollPageHandler";
 
 
 const pageVariants = {
-  initial: { y: "100%", opacity: 0 },
-  animate: { y: [0, -30, 0], opacity: 1 },
-  exit: { y: "-100%", opacity: 0 },
+  initial: { y: 1000, opacity: 0 },
+  animate: { y: [1000, -30, 0], opacity: 1 },
+  exit: { y: 1000, opacity: 0 },
 };
 
 const Layout = () => {
@@ -152,10 +152,10 @@ const Layout = () => {
         </div>
       )}
 
+          
     
-      <AnimatePresence mode="wait">
         <motion.div
-          onClick={handleScreenClick}
+          // onClick={handleScreenClick}
           onWheel={handleWheel}
           className={`${
             color[color.length - 1] === 'class' ? color[0] : ''
@@ -168,7 +168,7 @@ const Layout = () => {
           animate="animate"
           exit="exit"
           variants={pageVariants}
-          transition={{ duration: .5, ease: "easeInOut" }}
+          transition={{ duration: 1, ease: "easeInOut" }}
 
         >
           <div className="px-5 py-2 bg-gradient-to-r from-[rgba(255,255,255,0.4)] to-[rgba(255,255,255,0.2)] w-3/5 mx-auto flex items-center justify-between rounded-lg z-10">
@@ -185,7 +185,7 @@ const Layout = () => {
             <Outlet />
           </div>
         </motion.div>
-      </AnimatePresence>
+    
     </>
   );
 };
