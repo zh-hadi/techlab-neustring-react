@@ -1,6 +1,7 @@
 import {motion} from 'framer-motion'
 import PlaneIcon from '../../assets/planning-icon.svg'
 import SolutionIcon from '../../assets/solutionIcon.svg'
+import vectorline from '../../assets/vectorline.svg'
 
 const pageVariants = {
     initial: { y: "-100%", opacity: 0 }, 
@@ -46,10 +47,10 @@ const Page2 = () => {
         exit="exit"
         variants={pageVariants}
         transition={{ duration: 1, ease: "easeInOut" }}
-        className=' w-4/5 mx-auto flex justify-between items-center'>
+        className=' w-4/5 mx-auto h-full flex justify-between items-center'>
 
 
-        <div className='space-y-10'>
+        <div className='space-y-10  z-30'>
             <h2 className='text-[#2870AE] text-5xl text-center font-bold'>{data[0].title}</h2>
             <div className='flex flex-col gap-5 w-4/5 mx-auto'>
                 {data[0].content.map((item, index)=> (
@@ -64,6 +65,22 @@ const Page2 = () => {
                 ))}
             </div>
         </div>
+
+
+        {/* <div 
+            className='w-[50px] h-full absolute -top-20 left-1/2 opacity-50 z-5 bg-red-500' 
+            style={{background: 'linear-gradient(180deg, #7F7FD5 0%, rgba(134, 168, 231, 0.5) 50%, rgba(145, 234, 228, 0) 100%)'}}
+            >
+                
+        </div> */}
+
+
+        <div className='w-[150px] mt-20 h-full  absolute top-0 left-1/2 -translate-x-1/2 z-5'>
+            <img className='h-full z-1' src={ vectorline } alt="" />
+        </div>
+
+
+        
 
 
     </motion.div>

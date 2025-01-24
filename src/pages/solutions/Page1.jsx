@@ -4,6 +4,7 @@ import GitHubGlobe from '../../components/GitHubGlobe';
 import mouseIcon from '../../assets/mouse-icon.svg';
 import mapearth from '../../assets/map-earth.png';
 // import Globe from 'react-globe.gl';
+import svgline from '../../assets/svgline.svg';
 
 
 import Globe from '../../components/Globe';
@@ -21,7 +22,7 @@ const Page1 = () => {
   return (
 
     <>
-      <div className=' w-4/5 mx-auto flex justify-between items-center'>
+      <div className=' w-4/5 h-full mx-auto flex justify-between items-center'>
 
 
         <motion.div 
@@ -41,7 +42,7 @@ const Page1 = () => {
 
 
         <motion.div 
-          className='flex-1'
+          className='flex-1 '
         
           initial={{ opacity: 0, x: 200 }}
           animate={{ opacity: 1, x: 0 }}
@@ -58,14 +59,20 @@ const Page1 = () => {
             {/* <GitHubGlobe color="red"/> */}
             {/* <ReactGlobe /> */}
           </div>
+
+          <div className='absolute bottom-0 left-1/2 -translate-x-1/2  h-[100px] p-5 flex items-center justify-center'>
+
+            <img className='pt-20' src={svgline} alt="" />
+          </div>
+        
           
         </motion.div>
 
 
-      </div>
-      <div className='flex flex-col items-center'>
+      <div className='absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center'>
             <img src={mouseIcon} alt="" />
             <div className='text-white'>Scroll to view more</div>
+      </div>
       </div>
     </>
 

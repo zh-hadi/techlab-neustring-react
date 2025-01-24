@@ -47,7 +47,7 @@ const Page7 = () => {
 
         </motion.div>
         <div 
-            className='w-[6px] h-[150px]  absolute -top-20 left-1/2 opacity-50 z-5' 
+            className='w-[6px] h-[150px]  absolute -top-20 left-1/2 -translate-x-1/2 opacity-50 z-5' 
             style={{background: 'linear-gradient(180deg, #D6AE7B 0%, rgba(234, 205, 163, 0) 100%)'}}
             >
 

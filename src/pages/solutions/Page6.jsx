@@ -51,7 +51,7 @@ const Page6 = () => {
           <div
               className="w-[6px] h-[400px] mx-auto"
               style={{
-                background: 'linear-gradient(180deg, #7F7FD5 0%, rgba(134, 168, 231, 0.5) 50%, rgba(145, 234, 228, 0) 100%)'
+                background: 'linear-gradient(180deg, #D6AE7B 0%, rgba(234, 205, 163, 0) 100%)'
               }}
             ></div>
       </motion.div>
@@ -100,6 +100,14 @@ const Page6 = () => {
         </div>
         
       </motion.div>
+
+
+      <div 
+            className='w-[6px] h-[150px]  absolute -top-20 left-1/2 -translate-x-1/2 opacity-50 z-5' 
+            style={{background: 'linear-gradient(180deg, #508EEC 0%, rgba(117, 152, 243, 0) 79.17%)'}}
+            >
+
+        </div>
 
 
     </div>
