@@ -54,7 +54,7 @@ const AboutPage = () => {
   }, [setColor, location])
 
   return (
-    <motion.div className='w-full flex justify-evenly  relative z-0'>
+    <motion.div className='w-full flex flex-col md:flex-row justify-evenly  relative z-0 '>
      
 
 

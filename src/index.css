@@ -29,6 +29,12 @@
 }
 
 
-body {
-  overflow: hidden; /* Prevents scrolling animations */
+html, body, #root {
+  height: 100%;
+  overflow: hidden; /* Prevent native scrolling */
+}
+
+.motion-container {
+  height: 100vh; /* Ensure full height for each page */
+  overflow: hidden;
 }

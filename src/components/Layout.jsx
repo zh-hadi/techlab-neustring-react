@@ -95,6 +95,44 @@ const Layout = () => {
         }
       }
     };
+
+
+    const [touchStartY, setTouchStartY] = useState(0);
+  const [touchEndY, setTouchEndY] = useState(0);
+
+  const handleTouchStart = (event) => {
+    setTouchStartY(event.touches[0].clientY);
+  };
+
+  const handleTouchEnd = (event) => {
+    setTouchEndY(event.changedTouches[0].clientY);
+
+    const deltaY = touchStartY - touchEndY;
+
+    if (Math.abs(deltaY) > 50) {
+      // Determine the swipe direction
+      if (deltaY > 0) {
+        // Swipe up: Navigate to the next page
+        if (location.pathname === '/solution' && solIndex.solutionIndex < 6) {
+          solIndex.setSolutionIndex(solIndex.solutionIndex + 1);
+        } else {
+          solIndex.setSolutionIndex(0);
+          const currentIndex = routes.findIndex((route) => route === location.pathname);
+          const nextIndex = (currentIndex + 1) % routes.length;
+          navigate(routes[nextIndex]);
+        }
+      } else {
+        // Swipe down: Navigate to the previous page
+        if (solIndex.solutionIndex > 0) {
+          solIndex.setSolutionIndex(solIndex.solutionIndex - 1);
+        } else {
+          const currentIndex = routes.findIndex((route) => route === location.pathname);
+          const prevIndex = (currentIndex - 1 + routes.length) % routes.length;
+          navigate(routes[prevIndex]);
+        }
+      }
+    }
+  };
     
 
 
@@ -157,9 +195,11 @@ const Layout = () => {
         <motion.div
           // onClick={handleScreenClick}
           onWheel={handleWheel}
+          onTouchStart={handleTouchStart} // For mobile
+          onTouchEnd={handleTouchEnd} // For mobile
           className={`${
             color[color.length - 1] === 'class' ? color[0] : ''
-          }  h-screen w-full flex flex-col px-10 pt-5 absolute top-0 left-0 z-0`}
+          } h-full md:h-screen w-full  flex flex-col px-3 md:px-10 pt-5 absolute top-0 left-0 right-0 bottom-0 z-0`}
           // style={color[color.length - 1] === 'style' ? { background: homeColor } : backgroundStyle}
           style={{ background: bgColor}}
 
@@ -171,14 +211,14 @@ const Layout = () => {
           transition={{ duration: 1, ease: "easeInOut" }}
 
         >
-          <div className="px-5 py-2 bg-gradient-to-r from-[rgba(255,255,255,0.4)] to-[rgba(255,255,255,0.2)] w-3/5 mx-auto flex items-center justify-between rounded-lg z-10">
+          <div className="px-5 py-2 bg-gradient-to-r from-[rgba(255,255,255,0.4)] to-[rgba(255,255,255,0.2)] w-full md:w-3/5 mx-auto flex items-center justify-between rounded-lg z-10">
             <a href="">
-              <img className='w-[200px]' src={logo} alt="Logo" />
+              <img className='w-[120px] md:w-[200px]' src={logo} alt="Logo" />
             </a>
             <a href="" className='text-white px-4 py-1 border-white rounded-md text-md border'>Linkedin</a>
           </div>
 
-          <div className='w-full h-full px-10 pt-10 flex relative'>
+          <div className='w-full h-full  px-5 md:px-10 pt-10 flex relative'>
             <div ref={sidebarRef}>
                 <SideBar handler={handelSolutionIndex} linkColor={navColor} />
             </div>

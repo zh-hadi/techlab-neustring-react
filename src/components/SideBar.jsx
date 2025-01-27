@@ -40,7 +40,7 @@ const SideBar = ({handler, linkColor}) => {
 
   return (
     <div className='w-[300px] flex flex-col justify-between absolute top-0 bottom-0 z-50'>
-        <div className='flex flex-col justify-center flex-1 gap-2'> 
+        <div className=' flex-col justify-center flex-1 gap-2 hidden md:flex'> 
 
          
              

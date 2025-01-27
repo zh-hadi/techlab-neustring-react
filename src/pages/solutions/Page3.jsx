@@ -14,7 +14,7 @@ const Page3 = () => {
 
 
   return (
-    <div className=' w-4/5 mx-auto flex justify-between'>
+    <div className=' w-4/5 mx-auto flex flex-col md:flex-row justify-between'>
 
 
      <motion.div 
