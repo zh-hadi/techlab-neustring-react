@@ -28,15 +28,15 @@ const Page7 = () => {
    
          variants={pageVariants}
          transition={{ duration: 1, ease: "easeInOut" }}
-            className=' w-4/5 h-full mx-auto flex justify-between content-container'
+            className='w-ful md:w-4/5 h-full mx-auto flex justify-between '
             >
 
 
-            <div className='px-10 pt-20 mx-auto text-center flex flex-col gap-5'>
-                <h2 className='text-[#2870AE] text-6xl font-bold'>{data.title}</h2>
-                <p className='text-[#2870AE] text-base'>{data.description}</p>
+            <div className='px-10 pt-20 mx-auto text-center flex flex-col gap-5 pb-10'>
+                <h2 className='text-[#2870AE] text-3xl md:text-6xl font-bold'>{data.title}</h2>
+                <p className='text-[#2870AE] text-sm md:text-base'>{data.description}</p>
                 <div className='w-full flex justify-center'>
-                    <form action="" className='flex gap-3 items-center'>
+                    <form action="" className='flex flex-col md:flex-row gap-3 items-center'>
                         <input className='p-2 border border-[#ADD24F99] rounded-md' type="text" placeholder='company name'/>
                         <input className='p-2 border border-[#ADD24F99] rounded-md' type="text" placeholder='company email'/>
                         <button className='bg-gradient-to-r from-[#0E2C46] to-[#2870AE] p-2 text-white rounded-md'>Book a Demo</button>

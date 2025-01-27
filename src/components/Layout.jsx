@@ -158,6 +158,8 @@ const Layout = () => {
 
     let bgColor = pageColor.find(item => item.page === location.pathname.substring(1))?.color;
     let navColor = pageColor.find(item => item.page === location.pathname.substring(1))?.navColor;
+    let headerColor = pageColor.find(item => item.page === location.pathname.substring(1))?.headerColor;
+    let headerButton = pageColor.find(item => item.page === location.pathname.substring(1))?.headerButton;
 
     console.log(pageColor)
 
@@ -175,6 +177,9 @@ const Layout = () => {
         console.log(solIndex.solutionIndex)
         bgColor = solutionPage.pages[solIndex.solutionIndex].color;
         navColor = solutionPage.pages[solIndex.solutionIndex].navColor;
+        headerColor = solutionPage.pages[solIndex.solutionIndex].headerColor;
+        headerButton = solutionPage.pages[solIndex.solutionIndex].headerButton;
+       
       } else {
         console.log('Solution page is not found');
       }
@@ -226,14 +231,17 @@ const Layout = () => {
             <a href="">
               <img className='w-[120px] md:w-[200px]' src={logo} alt="Logo" />
             </a>
-            <a href="" className='text-white px-4 py-1 border-white rounded-md text-md border'>Linkedin</a>
+            <a href="" style={{ color: headerButton, border: `1px solid ${headerButton}`}}  className={` px-4 py-1  rounded-md text-md  font-semibold`}>Linkedin</a>
           </div>
 
           <div className='w-full  px-5 md:px-10 pt-10 flex relative'>
             <div ref={sidebarRef}>
                 <SideBar handler={handelSolutionIndex} linkColor={navColor} />
             </div>
+            <div className='content-container'>
+
             <Outlet />
+            </div>
           </div>
         </motion.div>
     

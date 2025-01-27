@@ -14,7 +14,7 @@ const Page3 = () => {
 
 
   return (
-    <div className='w-full md:w-4/5 mx-auto flex flex-col md:flex-row justify-between content-container relative'>
+    <div className='w-full md:w-4/5   h-[1500px]  mx-auto flex flex-col md:flex-row justify-between  relative' >
 
 
      <motion.div 
@@ -63,16 +63,16 @@ const Page3 = () => {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
       >
-        <div className='relative w-full h-full'>
-            <div className='flex justify-center items-center w-full h-full'>
-            <PlanBlob />
+        <div className='relative pt-0 md:pt-20'>
+            <div className='flex justify-center items-center'>
+                <PlanBlob />
             </div>
             <div
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col p-10 justify-between "
-              style={{ width: '428px', height: '405px' }}
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col p-5 md:p-10 justify-between w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px]"
+              // style={{ width: '428px', height: '405px' }}
             >
               <div 
-                className="text-white px-3 py-1 rounded-md text-3xl self-start" 
+                className="text-white px-3 py-1 rounded-md text-sm md:text-3xl self-start" 
                 style={{ 
                   background: 'linear-gradient(108.46deg, rgba(21, 108, 221, 0.264) 0%, rgba(21, 108, 221, 0.132) 100%)' 
                 }}
@@ -80,7 +80,7 @@ const Page3 = () => {
                 Forecasting
               </div>
               <div 
-                className="text-white px-3 py-1 rounded-md text-3xl self-end" 
+                className="text-white px-3 py-1 rounded-md text-sm md:text-3xl self-end" 
                 style={{ 
                   background: 'linear-gradient(108.46deg, rgba(21, 108, 221, 0.264) 0%, rgba(21, 108, 221, 0.132) 100%)' 
                 }}
@@ -88,7 +88,7 @@ const Page3 = () => {
                 Financial Targets
               </div>
               <div 
-                className="text-white px-3 py-1 rounded-md text-3xl self-start" 
+                className="text-white px-3 py-1 rounded-md text-sm md:text-3xl self-start" 
                 style={{ 
                   background: 'linear-gradient(108.46deg, rgba(21, 108, 221, 0.264) 0%, rgba(21, 108, 221, 0.132) 100%)' 
                 }}
@@ -100,6 +100,8 @@ const Page3 = () => {
         </div>
         
       </motion.div>
+
+      
 
 
     </div>

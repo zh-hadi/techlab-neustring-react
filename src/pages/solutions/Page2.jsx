@@ -47,7 +47,7 @@ const Page2 = () => {
         exit="exit"
         variants={pageVariants}
         transition={{ duration: 1, ease: "easeInOut" }}
-        className='w-full md:w-4/5 mx-auto md:h-full flex justify-between items-center overflow-y-auto content-container'>
+        className='w-full md:w-4/5 mx-auto md:h-full flex justify-between items-center '>
 
 
         <div className='space-y-10  z-30'>

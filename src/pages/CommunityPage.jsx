@@ -39,7 +39,7 @@ const CommunityPage = () => {
 <div>
 
       <motion.div 
-           className="grid grid-cols-2 gap-10 w-4/6 mx-auto h-full content-container"
+           className="grid grid-cols-2 gap-10 w-4/6 mx-auto h-full "
            style={{
              scrollbarWidth: "none",
              msOverflowStyle: "none", // Disable scrollbar in IE

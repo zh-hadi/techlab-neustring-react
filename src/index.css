@@ -54,7 +54,7 @@ html, body {
 
 
 .content-container {
-  height: 100vh; /* Full page height */
+  height: calc(100vh - 200px); /* Full page height */
   overflow-y: scroll; /* Ensure vertical scrolling */
   -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on mobile devices */
 
