@@ -22,7 +22,7 @@ const Page1 = () => {
   return (
 
     <>
-      <div className='w-full md:w-4/5  h-full  md:h-full mx-auto flex flex-col md:flex-row  md:justify-between justify-stretch items-center'>
+      <div className='w-full md:w-4/5   md:h-full mx-auto flex flex-col md:flex-row  md:justify-between justify-stretch items-center content-container'>
 
 
         <motion.div 

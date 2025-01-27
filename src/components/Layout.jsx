@@ -26,11 +26,8 @@ const Layout = () => {
   const [timeoutId, setTimeoutId] = useState(null);
   const location = useLocation();
 
-
-
   const solIndex = useSolutionPageIndex();
   
-
 
   const isVideoBackground = color[color.length - 1] === 'video';
   const backgroundStyle = isVideoBackground
@@ -69,15 +66,14 @@ const Layout = () => {
     const handleWheel = (event) => {
       const { scrollY, innerHeight } = window;
       const scrollHeight = document.documentElement.scrollHeight;
+
+     
     
       if (event.deltaY > 0) {
-        // Scrolling Down
-        if (scrollY + innerHeight >= scrollHeight) {
-          // User is at the bottom of the page
+        // Scrolling down
+        if (scrollY + innerHeight >= scrollHeight - 1) { // Slight offset to ensure you are at the bottom
           if (location.pathname === '/solution' && solIndex.solutionIndex < 6) {
-            console.log(solIndex.solutionIndex);
             solIndex.setSolutionIndex(solIndex.solutionIndex + 1);
-            exit(); // Exit animation or logic
           } else {
             solIndex.setSolutionIndex(0);
             const currentIndex = routes.findIndex((route) => route === location.pathname);
@@ -86,53 +82,68 @@ const Layout = () => {
           }
         }
       } else {
-        // Scrolling Up
-        if (scrollY === 0) {
-          // User is at the top of the page
+        // Scrolling up
+        if (scrollY <= 0) { // User is at the top of the page
           const currentIndex = routes.findIndex((route) => route === location.pathname);
           const prevIndex = (currentIndex - 1 + routes.length) % routes.length;
           navigate(routes[prevIndex]);
         }
       }
     };
-
+    
+    
+    
 
     const [touchStartY, setTouchStartY] = useState(0);
-  const [touchEndY, setTouchEndY] = useState(0);
+    const [touchEndY, setTouchEndY] = useState(0);
+    
+    const handleTouchStart = (event) => {
+      setTouchStartY(event.touches[0].clientY); // Capture the starting point of the touch
+    };
+    
+    const handleTouchEnd = (event) => {
+      setTouchEndY(event.changedTouches[0].clientY); // Capture the end point of the touch
+    
+      const deltaY = touchStartY - touchEndY; // Calculate the swipe distance
 
-  const handleTouchStart = (event) => {
-    setTouchStartY(event.touches[0].clientY);
-  };
-
-  const handleTouchEnd = (event) => {
-    setTouchEndY(event.changedTouches[0].clientY);
-
-    const deltaY = touchStartY - touchEndY;
-
-    if (Math.abs(deltaY) > 50) {
-      // Determine the swipe direction
-      if (deltaY > 0) {
-        // Swipe up: Navigate to the next page
-        if (location.pathname === '/solution' && solIndex.solutionIndex < 6) {
-          solIndex.setSolutionIndex(solIndex.solutionIndex + 1);
-        } else {
-          solIndex.setSolutionIndex(0);
-          const currentIndex = routes.findIndex((route) => route === location.pathname);
-          const nextIndex = (currentIndex + 1) % routes.length;
-          navigate(routes[nextIndex]);
-        }
-      } else {
-        // Swipe down: Navigate to the previous page
-        if (solIndex.solutionIndex > 0) {
-          solIndex.setSolutionIndex(solIndex.solutionIndex - 1);
-        } else {
-          const currentIndex = routes.findIndex((route) => route === location.pathname);
-          const prevIndex = (currentIndex - 1 + routes.length) % routes.length;
-          navigate(routes[prevIndex]);
+      console.log("deltay " + touchStartY + "      " + touchEndY + " " + deltaY)
+    
+      const container = document.querySelector(".content-container"); // Adjust this selector to your scrolling container
+      const containerHeight = container.offsetHeight; // Height of the container
+      console.log("height of the container ===== "+ containerHeight);
+      const contentHeight = container.scrollHeight; // Total scrollable height
+      console.log("height of the scroll ===== "+ contentHeight);
+      const scrollTop = container.scrollTop; // Current scroll position
+      
+      const isAtBottom = scrollTop + containerHeight >= contentHeight;
+      const isAtTop = scrollTop === 0;
+    
+      if (Math.abs(deltaY) > 50) {
+        // Determine swipe direction
+        if (deltaY > 0 && isAtBottom) {
+          // Swipe up and at the bottom of the container
+          if (location.pathname === "/solution" && solIndex.solutionIndex < 6) {
+            solIndex.setSolutionIndex(solIndex.solutionIndex + 1);
+          } else {
+            solIndex.setSolutionIndex(0);
+            const currentIndex = routes.findIndex((route) => route === location.pathname);
+            const nextIndex = (currentIndex + 1) % routes.length;
+            navigate(routes[nextIndex]);
+          }
+        } else if (deltaY < 0 && isAtTop) {
+          // Swipe down and at the top of the container
+          if (solIndex.solutionIndex > 0) {
+            solIndex.setSolutionIndex(solIndex.solutionIndex - 1);
+          } else {
+            const currentIndex = routes.findIndex((route) => route === location.pathname);
+            const prevIndex = (currentIndex - 1 + routes.length) % routes.length;
+            navigate(routes[prevIndex]);
+          }
         }
       }
-    }
-  };
+    };
+    
+  
     
 
 
@@ -195,11 +206,11 @@ const Layout = () => {
         <motion.div
           // onClick={handleScreenClick}
           onWheel={handleWheel}
-          onTouchStart={handleTouchStart} // For mobile
-          onTouchEnd={handleTouchEnd} // For mobile
+          onTouchStart={handleTouchStart} 
+          onTouchEnd={handleTouchEnd} 
           className={`${
             color[color.length - 1] === 'class' ? color[0] : ''
-          } h-full md:h-screen w-full  flex flex-col px-3 md:px-10 pt-5 absolute top-0 left-0 right-0 bottom-0 z-0`}
+          }  md:h-screen w-full h-full flex flex-col px-3 md:px-10 pt-5 absolute top-0 left-0 right-0 bottom-0 z-0`}
           // style={color[color.length - 1] === 'style' ? { background: homeColor } : backgroundStyle}
           style={{ background: bgColor}}
 
@@ -218,7 +229,7 @@ const Layout = () => {
             <a href="" className='text-white px-4 py-1 border-white rounded-md text-md border'>Linkedin</a>
           </div>
 
-          <div className='w-full h-full  px-5 md:px-10 pt-10 flex relative'>
+          <div className='w-full  px-5 md:px-10 pt-10 flex relative'>
             <div ref={sidebarRef}>
                 <SideBar handler={handelSolutionIndex} linkColor={navColor} />
             </div>

@@ -29,12 +29,40 @@
 }
 
 
-html, body, #root {
+/* body {
+  overflow: hidden; 
+} */
+
+html, body {
   height: 100%;
-  overflow: hidden; /* Prevent native scrolling */
+  margin: 0; 
+  overflow: hidden; 
+  scroll-behavior: smooth;
 }
 
+#root {
+  height: 100%;
+  overflow: auto;
+}
+
+
+/*
 .motion-container {
-  height: 100vh; /* Ensure full height for each page */
+  height: 100vh;
   overflow: hidden;
+} */
+
+
+.content-container {
+  height: 100vh; /* Full page height */
+  overflow-y: scroll; /* Ensure vertical scrolling */
+  -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on mobile devices */
+
+  /* Hide scrollbar */
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.content-container::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Edge */
 }

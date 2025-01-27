@@ -28,7 +28,7 @@ const Page7 = () => {
    
          variants={pageVariants}
          transition={{ duration: 1, ease: "easeInOut" }}
-            className=' w-4/5 h-full mx-auto flex justify-between'
+            className=' w-4/5 h-full mx-auto flex justify-between content-container'
             >
 
 

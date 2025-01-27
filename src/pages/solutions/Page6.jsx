@@ -14,7 +14,7 @@ const Page6 = () => {
 
 
   return (
-    <div className=' w-4/5 mx-auto flex justify-between items-center'>
+    <div className=' w-4/5 mx-auto flex justify-between items-center content-container'>
 
 
       <motion.div 

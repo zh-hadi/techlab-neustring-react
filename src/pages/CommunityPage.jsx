@@ -36,16 +36,17 @@ const CommunityPage = () => {
   return (
     <>
 
+<div>
+
       <motion.div 
-          className=' grid grid-cols-2 gap-10 w-4/6   mx-auto overflow-y-auto '
-          style={{
-            scrollbarWidth: "none",
-            msOverflowStyle: "none", 
-          
-          }}
-          initial={{ opacity: 0, scale: 0.8 }} 
-          animate={{ opacity: 1, scale: 1 }} 
-          transition={{ duration: 0.8, ease: "easeInOut" }} 
+           className="grid grid-cols-2 gap-10 w-4/6 mx-auto h-full content-container"
+           style={{
+             scrollbarWidth: "none",
+             msOverflowStyle: "none", // Disable scrollbar in IE
+           }}
+           initial={{ opacity: 0, scale: 0.8 }}
+           animate={{ opacity: 1, scale: 1 }}
+           transition={{ duration: 0.8, ease: "easeInOut" }}
       >
         <div className='col-span-2 flex flex-col  items-center'>
           <div className='flex gap-2 items-center'>
@@ -118,6 +119,7 @@ const CommunityPage = () => {
       
 
       </motion.div>
+</div>
     </>
 
   )

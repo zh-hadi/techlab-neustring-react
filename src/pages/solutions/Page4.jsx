@@ -14,7 +14,7 @@ const Page4 = () => {
 
 
   return (
-    <div className=' w-4/5 mx-auto flex justify-between items-center'>
+    <div className=' w-4/5 mx-auto flex justify-between items-center content-container'>
 
 
       <motion.div 
@@ -63,7 +63,7 @@ const Page4 = () => {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
       >
-        <div className='relative w-full h-full'>
+        <div className='relative w-full h-full '>
             <div className='flex justify-center items-center w-full h-full'>
                 <ExecutingBlob />
             </div>

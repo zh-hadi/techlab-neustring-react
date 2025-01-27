@@ -41,13 +41,13 @@ const Page2 = () => {
 
 
   return (
-    <motion.div 
+    <motion.div
         initial="initial"
         animate="animate"
         exit="exit"
         variants={pageVariants}
         transition={{ duration: 1, ease: "easeInOut" }}
-        className='w-full md:w-4/5 mx-auto md:h-full flex justify-between items-center'>
+        className='w-full md:w-4/5 mx-auto md:h-full flex justify-between items-center overflow-y-auto content-container'>
 
 
         <div className='space-y-10  z-30'>

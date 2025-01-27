@@ -16,7 +16,7 @@ const ContactUsPage = () => {
 
 
   return (
-    <div className='w-3/4 mx-auto'>
+    <div className='w-3/4 mx-auto content-container'>
       <div className='flex flex-col md:flex-row items-center justify-evenly'>
         <div className=' flex flex-col items-center md:items-end text-center md:text-right gap-5'>
           <h2 className='text-4xl leading-9 font-bold  text-transparent bg-clip-text bg-gradient-to-r from-[#0F314F]  to-[#226CAC]'>Connect with NeuString</h2>

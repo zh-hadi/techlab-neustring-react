@@ -18,6 +18,7 @@ import Layout from './components/Layout';
 import { createContext, useState, useContext } from 'react';
 import { PagesColorProvider } from './contexts/PagesColorContext'
 import { SolutionPageProvider} from './contexts/SolutionPageContext'
+import { ScrollContext } from './contexts/ScrollContext'
 
 import ScrollPageHandler from "./components/ScrollPageHandler";
 
@@ -69,6 +70,7 @@ const App = () => {
     
     <SolutionPageProvider>
 
+                <ScrollContext>
                   <PagesColorProvider>
                       <ColorContext.Provider key="111" value={{ color, setColor }}>
 
@@ -82,6 +84,7 @@ const App = () => {
                       </ColorContext.Provider>
                       
                   </PagesColorProvider>
+                </ScrollContext>
                 </SolutionPageProvider>
                 
 

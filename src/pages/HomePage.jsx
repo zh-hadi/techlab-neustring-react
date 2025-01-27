@@ -21,7 +21,7 @@ const HomePage = () => {
 
 
   return (
-    <div className='w-full flex  flex-col justify-between items-center ' id='home-page'>
+    <div className='w-full flex  flex-col justify-between items-center content-container' id='home-page'>
       <div className='flex flex-col justify-center items-center md:w-3/5 gap-5 flex-1'>
             <h1 className='text-3xl md:text-[68px]  font-bold text-white text-center'>Transforming Telecom Analytics with NeuString</h1>
             <p className='text-white opacity-50 text-center text-base'>Experience the future of telecom with NeuString. Harness the power of Co-Pilot Intelligence to automate tasks, QuickSight Insights to visualize critical data, and Secure Collaboration to empower teams.</p>

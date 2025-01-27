@@ -14,11 +14,11 @@ const Page3 = () => {
 
 
   return (
-    <div className=' w-4/5 mx-auto flex flex-col md:flex-row justify-between'>
+    <div className='w-full md:w-4/5 mx-auto flex flex-col md:flex-row justify-between content-container relative'>
 
 
      <motion.div 
-             className='flex-1 flex flex-col gap-5 items-start'
+             className='flex-1 flex flex-col gap-5 items-start z-10'
            
              initial={{ opacity: 0, x: -300 }}
              animate={{ opacity: 1, x: 0 }}
@@ -33,7 +33,7 @@ const Page3 = () => {
            </motion.div>
      
            <motion.div 
-             className='w-[200px] h-full space-y-5'
+             className='w-[200px] h-full space-y-5 order-first md:order-none z-0'
             
              initial={{ opacity: 0, y: 600 }}
              animate={{ opacity: 1, y: 0 }}
@@ -49,7 +49,7 @@ const Page3 = () => {
                </div>
      
                <div
-                   className="w-[6px] h-[400px] mx-auto"
+                   className="w-[6px] h-[400px] mx-auto hidden md:block"
                    style={{
                      background: 'linear-gradient(180deg, #7F7FD5 0%, rgba(134, 168, 231, 0.5) 50%, rgba(145, 234, 228, 0) 100%)'
                    }}
