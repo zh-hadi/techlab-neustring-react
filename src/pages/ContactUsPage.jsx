@@ -2,7 +2,7 @@
 import { useEffect, useContext } from 'react'
 import { ColorContext } from '../App'
 import { useLocation } from 'react-router-dom'
-import PhoneLogo from '../assets/phone-logo.svg'
+import PhoneLogo from '../assets/phone-image.png'
 import IphoneIcon from '../assets/apple-icon.svg'
 import PlayStoreIcon from '../assets/play-store.svg'
 
@@ -17,7 +17,7 @@ const ContactUsPage = () => {
 
 
   return (
-    <div className='w-full md:w-3/5 mx-auto pb-[100px] md:pb-0 md:pt-20'>
+    <div className='w-full md:w-3/5 mx-auto mb-[100px] md:pb-0 '>
       <div className='flex flex-col md:flex-row items-center justify-evenly'>
         <div className=' flex flex-col items-center md:items-end text-center md:text-right gap-5'>
           <h2 className='text-4xl leading-9 font-bold  text-transparent bg-clip-text bg-gradient-to-r from-[#0F314F]  to-[#226CAC]'>Connect with NeuString</h2>
@@ -34,7 +34,7 @@ const ContactUsPage = () => {
         </div>
         <div className="w-full max-w-full flex justify-center">
           <img 
-            className="h-auto w-full max-w-[300px] sm:max-w-[400px] md:max-w-[800px] lg:max-w-[1000px]" 
+            className="h-auto w-full max-w-[300px] sm:max-w-[400px] md:max-w-[450px] lg:max-w-[500px]" 
             src={PhoneLogo} 
             alt="Phone Logo" 
           />
