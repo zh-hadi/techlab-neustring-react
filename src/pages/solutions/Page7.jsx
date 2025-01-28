@@ -1,5 +1,7 @@
 import {motion} from 'framer-motion'
 import PlaneIcon from '../../assets/planning-icon.svg'
+import Bg_image from '../../assets/page_7_bg.svg'
+import Bg_logo from '../../assets/page_7_logo.svg'
 
 
 const pageVariants = {
@@ -28,11 +30,11 @@ const Page7 = () => {
    
          variants={pageVariants}
          transition={{ duration: 1, ease: "easeInOut" }}
-            className='w-ful md:w-4/5 h-full mx-auto flex justify-between '
+            className='w-ful md:w-4/5 h-full mx-auto flex justify-between z-10 pb-20 mb:pb-0'
             >
 
 
-            <div className='px-10 pt-20 mx-auto text-center flex flex-col gap-5 pb-10'>
+            <div className='px-10 pt-5 pb-20 md:pb-0 md:pt-20 mx-auto text-center flex flex-col gap-5'>
                 <h2 className='text-[#2870AE] text-3xl md:text-6xl font-bold'>{data.title}</h2>
                 <p className='text-[#2870AE] text-sm md:text-base'>{data.description}</p>
                 <div className='w-full flex justify-center'>
@@ -45,13 +47,19 @@ const Page7 = () => {
             </div>
 
 
+        
         </motion.div>
         <div 
-            className='w-[6px] h-[150px]  absolute -top-20 left-1/2 -translate-x-1/2 opacity-50 z-5' 
+            className='hidden md:block w-[6px] h-[150px]  absolute top-0 left-1/2 -translate-x-1/2 opacity-50 z-5' 
             style={{background: 'linear-gradient(180deg, #D6AE7B 0%, rgba(234, 205, 163, 0) 100%)'}}
             >
-
         </div>
+
+            <img className='hidden md:block md:absolute bottom-0 left-0 right-0  w-full z-0' src={Bg_image } alt="" />
+            <img className='hidden md:block md:absolute bottom-0 left-1/2 -translate-x-1/2 z-5' src={Bg_logo} alt="" />
+       
+  
+
     </>
     
   )

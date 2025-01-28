@@ -32,7 +32,7 @@ const SolutionPage = () => {
 
   return (
     <>
-      <div className='mx-auto '>
+      <div className=''>
         {/* Render the page based on currentIndex */}
         <CurrentPage />
 

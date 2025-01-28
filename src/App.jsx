@@ -70,7 +70,7 @@ const App = () => {
     
     <SolutionPageProvider>
 
-                <ScrollContext>
+                
                   <PagesColorProvider>
                       <ColorContext.Provider key="111" value={{ color, setColor }}>
 
@@ -84,7 +84,7 @@ const App = () => {
                       </ColorContext.Provider>
                       
                   </PagesColorProvider>
-                </ScrollContext>
+               
                 </SolutionPageProvider>
                 
 

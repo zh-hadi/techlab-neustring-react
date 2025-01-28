@@ -22,7 +22,7 @@ const Page1 = () => {
   return (
 
     <>
-      <div className='w-full md:w-4/5   md:h-full mx-auto flex flex-col md:flex-row  md:justify-between justify-stretch items-center '>
+      <div className='w-full md:w-4/5   md:h-full mx-auto flex flex-col md:flex-row  md:justify-between justify-stretch items-center pb-10 mb:pb-0'>
 
 
         <motion.div 
@@ -68,11 +68,11 @@ const Page1 = () => {
           
         </motion.div>
 
-
-      <div className='absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center md:hidden'>
+        <div className='md:hidden absolute bottom-0 left-1/2 -translate-x-1/2  flex flex-col items-center '>
             <img src={mouseIcon} alt="" />
             <div className='text-white'>Scroll to view more</div>
-      </div>
+        </div> 
+
       </div>
     </>
 

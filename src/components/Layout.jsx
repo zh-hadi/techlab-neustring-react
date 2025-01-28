@@ -191,20 +191,24 @@ const Layout = () => {
   return (
     <>
  
-      {isVideoBackground && location.pathname === '/home' && (
-        <div className='h-screen w-full z-50'>
-          <div className="relative h-screen w-full">
-              <video autoPlay loop muted className="video-bg h-screen w-full object-cover">
-                <source src={HeroVideo} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              <div className='absolute top-0  right-0 bottom-0 left-0 bg-[#0E2C4699]'></div>
-              <img className='absolute  bottom-5  right-5 ' src={NeuStringSideLogo} alt="" />
-
-          </div>
-          
-        </div>
-      )}
+ {
+  isVideoBackground && location.pathname === '/home' ? (
+    <div className="h-screen w-full z-50">
+      <div className="relative h-screen w-full">
+        <video autoPlay loop muted className="video-bg h-screen w-full object-cover">
+          <source src={HeroVideo} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div className="absolute top-0 right-0 bottom-0 left-0 bg-[#0E2C4699]"></div>
+        <img className="absolute bottom-5 right-5" src={NeuStringSideLogo} alt="" />
+      </div>
+    </div>
+  ) : (
+    <div className="h-screen w-full z-50 " style={{ background: bgColor}}>
+      
+    </div>
+  )
+}
 
           
     
@@ -215,7 +219,7 @@ const Layout = () => {
           onTouchEnd={handleTouchEnd} 
           className={`${
             color[color.length - 1] === 'class' ? color[0] : ''
-          }  md:h-screen w-full h-full flex flex-col px-3 md:px-10 pt-5 absolute top-0 left-0 right-0 bottom-0 z-0`}
+          }   flex flex-col px-3 md:px-10 pt-5 absolute top-0 left-0 right-0  bottom-0 z-0 `}
           // style={color[color.length - 1] === 'style' ? { background: homeColor } : backgroundStyle}
           style={{ background: bgColor}}
 
@@ -234,14 +238,14 @@ const Layout = () => {
             <a href="" style={{ color: headerButton, border: `1px solid ${headerButton}`}}  className={` px-4 py-1  rounded-md text-md  font-semibold`}>Linkedin</a>
           </div>
 
-          <div className='w-full  px-5 md:px-10 pt-10 flex relative'>
+          <div className='w-full  px-5 md:px-10 pt-10 flex relative content-container'>
             <div ref={sidebarRef}>
                 <SideBar handler={handelSolutionIndex} linkColor={navColor} />
             </div>
-            <div className='content-container'>
+            
 
-            <Outlet />
-            </div>
+              <Outlet />
+       
           </div>
         </motion.div>
     

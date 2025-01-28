@@ -47,12 +47,12 @@ const Page2 = () => {
         exit="exit"
         variants={pageVariants}
         transition={{ duration: 1, ease: "easeInOut" }}
-        className='w-full md:w-4/5 mx-auto md:h-full flex justify-between items-center '>
+        className='w-full md:w-4/5 mx-auto md:h-full flex justify-between items-center pb-10 mb:pb-0'>
 
 
         <div className='space-y-10  z-30'>
             <h2 className='text-[#2870AE] text-3xl md:text-5xl text-center font-bold'>{data[0].title}</h2>
-            <div className='flex flex-col gap-5 w-4/5 mx-auto'>
+            <div className='flex flex-col gap-5 w-full md:w-4/5 mx-auto'>
                 {data[0].content.map((item, index)=> (
                 <div key={item.title} className={` w-full md:w-2/3 p-3 bg-white bg-opacity-30 rounded-md flex flex-col md:flex-row gap-5 ${index % 2 === 0 ? 'self-center md:self-start': 'self-center md:self-end'}`}>
                     <div><img className='w-[120px] h-[120px]' src={SolutionIcon} alt="" /></div>
@@ -75,7 +75,7 @@ const Page2 = () => {
         </div> */}
 
 
-        <div className='w-[150px] mt-20 h-full  absolute top-0 left-1/2 -translate-x-1/2 z-5'>
+        <div className='hidden md:block w-[150px] mt-20 h-full  absolute top-0 left-1/2 -translate-x-1/2 z-5'>
             <img className='h-full z-1' src={ vectorline } alt="" />
         </div>
 
