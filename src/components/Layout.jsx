@@ -64,33 +64,36 @@ const Layout = () => {
 
 
     const handleWheel = (event) => {
-      const { scrollY, innerHeight } = window;
-      const scrollHeight = document.documentElement.scrollHeight;
-
-     
+      const { deltaY } = event; // Get the vertical scroll amount
+      const container = document.querySelector(".content-container"); // Adjust this selector to your scrolling container
+      const containerHeight = container.offsetHeight; // Height of the container
+      const contentHeight = container.scrollHeight; // Total scrollable height
+      const scrollTop = container.scrollTop; // Current scroll position
     
-      if (event.deltaY > 0) {
-        // Scrolling down
-        if (scrollY + innerHeight >= scrollHeight - 1) { // Slight offset to ensure you are at the bottom
-          if (location.pathname === '/solution' && solIndex.solutionIndex < 6) {
-            solIndex.setSolutionIndex(solIndex.solutionIndex + 1);
-          } else {
-            solIndex.setSolutionIndex(0);
-            const currentIndex = routes.findIndex((route) => route === location.pathname);
-            const nextIndex = (currentIndex + 1) % routes.length;
-            navigate(routes[nextIndex]);
-          }
-        }
-      } else {
-        // Scrolling up
-        if (scrollY <= 0) { // User is at the top of the page
+      const isAtBottom = scrollTop + containerHeight >= contentHeight - 1; // Check if at the bottom
+      const isAtTop = scrollTop === 0; // Check if at the top
+    
+      if (deltaY > 0 && isAtBottom) {
+        // Scrolling down and at the bottom of the container
+        if (location.pathname === '/solution' && solIndex.solutionIndex < 6) {
+          solIndex.setSolutionIndex(solIndex.solutionIndex + 1); // Increment solution index
+        } else {
+          solIndex.setSolutionIndex(0); // Reset solution index
           const currentIndex = routes.findIndex((route) => route === location.pathname);
-          const prevIndex = (currentIndex - 1 + routes.length) % routes.length;
+          const nextIndex = (currentIndex + 1) % routes.length; // Move to the next route
+          navigate(routes[nextIndex]);
+        }
+      } else if (deltaY < 0 && isAtTop) {
+        // Scrolling up and at the top of the container
+        if (location.pathname === '/solution' && solIndex.solutionIndex > 0) {
+          solIndex.setSolutionIndex(solIndex.solutionIndex - 1); // Decrement solution index
+        } else {
+          const currentIndex = routes.findIndex((route) => route === location.pathname);
+          const prevIndex = (currentIndex - 1 + routes.length) % routes.length; // Move to the previous route
           navigate(routes[prevIndex]);
         }
       }
     };
-    
     
     
 

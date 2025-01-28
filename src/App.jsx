@@ -63,12 +63,8 @@ const App = () => {
   const [color, setColor] = useState(colorData); 
 
 
-
-
   return (
-    
-    
-    
+      
     <SolutionPageProvider>
 
                 

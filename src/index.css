@@ -74,3 +74,54 @@ html, body {
   border-radius: 25px; 
 }
 
+
+.tag {
+  border-radius: 0 0 10px 0;
+}
+
+.tag::after {
+  width: 1px;
+  height: 1px;
+  content: "";
+  position: absolute;
+  background-color: transparent;
+  top: 0px;
+  right: -4px;
+  border-top-left-radius: 6px;
+  box-shadow: -2px -2px white; 
+}
+
+.tag::before {
+  width: 4px;
+  height: 4px;
+  content: '';
+  background-color: transparent;
+  position: absolute;
+  top: 4px;
+  right: -8px;
+  border-top-left-radius: 6px;
+  box-shadow: -2px -2px #82BC34;
+}
+
+.curv_1, .curv_2 {
+  width: 6px;
+  height: 6px;
+  content: '';
+  position: absolute;
+}
+
+.curv_1{
+  background-color: transparent;
+  bottom: -6px;
+  left: 0px;
+  border-top-left-radius: 6px;
+  box-shadow: -2px -2px white;
+}
+
+.curv_2{
+  background-color: transparent;
+  bottom: -10px;
+  left: 4px;
+  border-top-left-radius: 6px;
+  box-shadow: -2px -2px #82BC34;
+}
