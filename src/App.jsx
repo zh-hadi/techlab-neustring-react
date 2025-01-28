@@ -19,6 +19,7 @@ import { createContext, useState, useContext } from 'react';
 import { PagesColorProvider } from './contexts/PagesColorContext'
 import { SolutionPageProvider} from './contexts/SolutionPageContext'
 import { ScrollContext } from './contexts/ScrollContext'
+import { DataContextProvider, useDataContext } from './contexts/DataContext';
 
 import ScrollPageHandler from "./components/ScrollPageHandler";
 
@@ -63,8 +64,12 @@ const App = () => {
   const [color, setColor] = useState(colorData); 
 
 
+  
+
+
   return (
-      
+      <DataContextProvider>
+
     <SolutionPageProvider>
 
                 
@@ -83,6 +88,7 @@ const App = () => {
                   </PagesColorProvider>
                
                 </SolutionPageProvider>
+      </DataContextProvider>
                 
 
   
