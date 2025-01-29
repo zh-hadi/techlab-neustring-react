@@ -2,15 +2,22 @@ import {motion} from 'framer-motion'
 import PlaneIcon from '../../assets/planning-icon.svg'
 import ExecutingBlob from '../../components/blob/ExecutingBlob';
 
+import { useDataContext } from '../../contexts/DataContext';
+
 const Page4 = () => {
 
-    const data = {
+    const staticData = {
         plan: 'Executing',
         title: 'Executing Your Roaming Financial Strategy',
         description: 'Once your strategy and financial targets are in place, the next crucial step is execution. Deals are the lifeblood of your wholesale roaming business, and NeuString Analytics provides a comprehensive solution to streamline your deal management process.',
         image: '',
         service: ['Deal Business Cases', 'Approvals', 'Negotiations', 'Contracting', 'Implementing']
     };
+
+
+    const apidata = useDataContext();
+    
+    const data = apidata?.apiData?.data?.solutionPage?.page4 || staticData
 
 
   return (

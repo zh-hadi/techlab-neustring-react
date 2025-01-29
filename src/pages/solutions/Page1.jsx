@@ -15,16 +15,16 @@ import Globe from '../../components/Globe';
 
 const Page1 = () => {
 
-    const data = {
+    let staticData = {
         title: 'Efficiency, Delivered',
         description: 'NeuString is your one-stop solution for streamlined wholesale roaming. Our platform integrates seamlessly with your existing workflows, optimizing every step of the journey, from planning to closure.',
         image: '',
     };
 
     const apidata = useDataContext();
-    console.log(apidata.apiData.data.homePage)
-    console.log(apidata.apiData.data.aboutPage)
-
+    
+    const data = apidata?.apiData?.data?.solutionPage?.page1 || staticData
+    
 
   return (
 

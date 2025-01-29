@@ -2,15 +2,22 @@ import {motion} from 'framer-motion'
 import PlaneIcon from '../../assets/planning-icon.svg'
 import CloseingBlob from '../../components/blob/CloseingBlob'
 
+import { useDataContext } from '../../contexts/DataContext';
+
 const Page6 = () => {
 
-    const data = {
+    const staticData = {
         plan: 'Closing',
         title: 'Maximizing Efficiency in Deal Closure',
         description: 'Digital transformation empowers organizations to optimize the final stages of wholesale financial management. Automating the Reconciliation and Settlement processes, including the review of Deal conditions and financial calculations, leads to faster, more accurate, and cost-effective deal closure.',
         image: '',
         service: ['Validation', 'Settlement', 'Evaluation']
     };
+
+    
+    const apidata = useDataContext();
+    
+    const data = apidata?.apiData?.data?.solutionPage?.page6 || staticData
 
 
   return (

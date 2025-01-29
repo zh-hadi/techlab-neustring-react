@@ -3,7 +3,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 const dataContext = createContext();
 
 const DataContextProvider = ({ children }) => {
-  const [apiData, setApiData] = useState("hadiuzzaman");
+  const [apiData, setApiData] = useState({});
 
   // Fetch data when the component mounts
   useEffect(() => {

@@ -6,6 +6,8 @@ import activeIcon from '../assets/icon-active.svg'
 import PlayButton from '../assets/Play.svg'
 import { useLocation } from 'react-router-dom'
 
+import { useDataContext } from '../contexts/DataContext'
+
 
 const motionLeft = {
   initial: { opacity: 0 },
@@ -39,6 +41,20 @@ const motionRight = {
 
 
 const AboutPage = () => {
+
+  const staticData = {
+    title: 'Discover how NeuString revolutionizes wholesale roaming. ',
+    description: 'Since our inception, NeuString has empowered leading mobile operators across the globe, achieving:',
+    image: '',
+    video: 'https://www.youtube.com/embed/DqR9K6-p07E',
+    services: [ 
+      'Real-time insights with CO-Pilot that drive informed decisions', 
+      'Automated workflows that boost efficiency', 
+      'Intelligent Roaming Management with predictive insights and innovative tools.', 
+    ]
+  }
+  
+
   const [isLoaded, setIsLoaded] = useState(false);
   const {setColor} = useContext(ColorContext)
   const location = useLocation();
@@ -53,6 +69,12 @@ const AboutPage = () => {
 
   }, [setColor, location])
 
+
+
+  // fetch data 
+  const apidata = useDataContext();
+  const data = apidata?.apiData?.data?.aboutPage ||  staticData;
+ 
   return (
     <motion.div className='w-full flex flex-col gap-5 md:flex-row justify-evenly  relative z-0 pb-10 mb:pb-0'>
      
@@ -74,21 +96,24 @@ const AboutPage = () => {
         variants={motionRight}
       >
         <div className="flex flex-col text-left gap-5 w-full md:w-4/5">
-          <h2 className='text-3xl md:text-6xl   font-bold text-[#0E2C46]'>Discover how NeuString revolutionizes wholesale roaming. </h2>
-          <p className='text-[#0E2C46] text-normal md:text-xl'>Since our inception, NeuString has empowered leading mobile operators across the globe, achieving:</p>
+          <h2 className='text-3xl md:text-6xl   font-bold text-[#0E2C46]'>{data.title} </h2>
+          <p className='text-[#0E2C46] text-normal md:text-xl'>{data.description}</p>
           <div className='flex flex-col gap-4 text-sm md:text-xl font-semibold '>
-            <div className='flex gap-2'>
-              <img src={activeIcon} alt="" />
-              <p className='text-[#12141D]'>Real-time insights with CO-Pilot that drive informed decisions</p>
-            </div>
-            <div className='flex gap-2'>
-              <img src={activeIcon} alt="" />
+            {data.services.map((item, index) => 
+
+            (<div className='flex gap-2 items-start' key={index}>
+              <img className='size-2 mt-2' src={activeIcon} alt="" />
+              <p className='text-[#12141D]'>{item}</p>
+            </div>)
+            )}
+            {/* <div className='flex gap-2 items-start'>
+              <img className='size-2 mt-2' src={activeIcon} alt="" />
               <p>Automated workflows that boost efficiency</p>
             </div>
-            <div className='flex gap-2'>
-              <img src={activeIcon} alt="" />
+            <div className='flex gap-2 items-start'>
+              <img className='size-2 mt-2' src={activeIcon} alt="" />
               <p>Intelligent Roaming Management with predictive insights and innovative tools.</p>
-            </div>
+            </div> */}
           </div>
         </div>
       </motion.div>

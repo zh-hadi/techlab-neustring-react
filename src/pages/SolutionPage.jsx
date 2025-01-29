@@ -32,7 +32,7 @@ const SolutionPage = () => {
 
   return (
     <>
-      <div className=''>
+      <div className='w-full'>
         {/* Render the page based on currentIndex */}
         <CurrentPage />
 

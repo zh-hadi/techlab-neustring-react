@@ -2,15 +2,21 @@ import {motion} from 'framer-motion'
 import PlaneIcon from '../../assets/planning-icon.svg'
 import TrakingBlob from '../../components/blob/TrakingBlob'
 
+import { useDataContext } from '../../contexts/DataContext'
+
 const Page5 = () => {
 
-    const data = {
+    const staticData = {
         plan: 'Tracking',
         title: 'Tracking and Optimizing Your Roaming Financial Performance',
         description: 'Once Even the most meticulously planned and executed strategies can encounter unexpected challenges. To ensure that your wholesale roaming financial operations remain on track, robust tracking and benchmarking are essential.',
         image: '',
         service: ['Commitments', 'Targets', 'Traffic Anomalies', 'Accruals']
     };
+
+    const apidata = useDataContext();
+    
+    const data = apidata?.apiData?.data?.solutionPage?.page5 || staticData
 
 
   return (

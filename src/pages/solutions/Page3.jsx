@@ -2,15 +2,23 @@ import {motion} from 'framer-motion'
 import PlaneIcon from '../../assets/planning-icon.svg'
 import PlanBlob from '../../components/blob/PlanBlob';
 
+import { useDataContext } from '../../contexts/DataContext';
+
 const Page3 = () => {
 
-    const data = {
+    const staticData = {
         plan: 'Planning',
         title: 'Laying the Groundwork for Success',
         description: 'Efficient planning is the cornerstone of successful wholesale roaming financial management. NeuString Analytics provides the tools to streamline your planning process and set the stage for optimal performance.',
         image: '',
         service: ['Forecasting', 'Financial Targets', 'Business Case']
     };
+
+
+
+    const apidata = useDataContext();
+    
+    const data = apidata?.apiData?.data?.solutionPage?.page3 || staticData
 
 
   return (
