@@ -76,7 +76,7 @@ const Page7 = () => {
                 animate="animate"
                 variants={pageVariants}
                 transition={{ duration: 1, ease: "easeInOut" }}
-                className='w-ful md:w-4/5 h-full mx-auto flex justify-between z-10 pb-20 mb:pb-0'
+                className='w-full md:w-4/5 h-full mx-auto flex justify-between z-10 pb-20 mb:pb-0'
             >
                 <div className='px-10 pt-5 pb-20 md:pb-0 md:pt-20 mx-auto text-center flex flex-col gap-5'>
                     <h2 className='text-[#2870AE] text-3xl md:text-6xl font-bold'>{data.title}</h2>

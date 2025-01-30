@@ -88,9 +88,7 @@ const Page2 = () => {
             <img className='h-full z-1' src={ vectorline } alt="" />
         </div>
 
-
-        
-
+    
 
     </motion.div>
   )

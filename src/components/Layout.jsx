@@ -12,6 +12,9 @@ import { usePageColors } from '../contexts/PagesColorContext';
 import { useSolutionPageIndex } from '../contexts/SolutionPageContext';
 import ScrollPageHandler from "./ScrollPageHandler";
 
+import { NavLink } from 'react-router-dom';
+import MobileMenu from './MobileMenu';
+
 
 
 const pageVariants = {
@@ -239,6 +242,12 @@ const Layout = () => {
               <img className='w-[120px] md:w-[200px]' src={logo} alt="Logo" />
             </a>
             <a href="" style={{ color: headerButton, border: `1px solid ${headerButton}`}}  className={` px-4 py-1  rounded-md text-md  font-semibold`}>Linkedin</a>
+          
+
+           <MobileMenu />
+
+            
+
           </div>
 
           <div className='w-full  px-5 md:px-10 pt-10 flex relative content-container'>
