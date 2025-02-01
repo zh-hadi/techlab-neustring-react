@@ -3,6 +3,8 @@ import PlaneIcon from '../../assets/planning-icon.svg'
 import PlanBlob from '../../components/blob/PlanBlob';
 
 import { useDataContext } from '../../contexts/DataContext';
+import { StaticCopyUsage } from 'three';
+import { div } from 'framer-motion/client';
 
 const Page3 = () => {
 
@@ -19,6 +21,9 @@ const Page3 = () => {
     const apidata = useDataContext();
     
     const data = apidata?.apiData?.data?.solutionPage?.page3 || staticData
+    // const data = staticData
+
+    // console.log(data)
 
 
   return (
@@ -79,15 +84,22 @@ const Page3 = () => {
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col p-5 md:p-10 justify-between w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px]"
               // style={{ width: '428px', height: '405px' }}
             >
-              <div 
-                className="text-white px-3 py-1 rounded-md text-sm md:text-3xl self-start" 
-                style={{ 
-                  background: 'linear-gradient(108.46deg, rgba(21, 108, 221, 0.264) 0%, rgba(21, 108, 221, 0.132) 100%)' 
-                }}
-              >
-                Forecasting
-              </div>
-              <div 
+
+              {data.service.map((item, index) => (
+                <div 
+                  key={index}
+                  className={ `text-white px-3 py-1 rounded-md text-sm md:text-3xl ${index % 2=== 0 ? ' self-start': ' self-end'}`}
+                  style={{ 
+                    background: 'linear-gradient(108.46deg, rgba(21, 108, 221, 0.264) 0%, rgba(21, 108, 221, 0.132) 100%)' 
+                  }}
+                >
+                  {item}
+                </div>
+                 
+              ))}
+
+
+              {/* <div 
                 className="text-white px-3 py-1 rounded-md text-sm md:text-3xl self-end" 
                 style={{ 
                   background: 'linear-gradient(108.46deg, rgba(21, 108, 221, 0.264) 0%, rgba(21, 108, 221, 0.132) 100%)' 
@@ -102,7 +114,7 @@ const Page3 = () => {
                 }}
               >
                 Business Case
-              </div>
+              </div> */}
           
             </div>
         </div>

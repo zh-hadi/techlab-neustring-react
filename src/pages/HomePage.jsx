@@ -41,8 +41,18 @@ const HomePage = () => {
     <div className='w-full flex  flex-col   items-center content-container' id='home-page'>
       <div className='flex flex-col justify-start md:justify-center items-center md:w-3/5 gap-5 flex-1'>
             <h1 className='text-3xl md:text-7xl  tracking-wide font-bold text-white text-center'>{ data.title }</h1>
-            <p className='text-white opacity-50 text-center text-base'>{ data.description }</p>
-            <a href={data.link} className='border border-[#82BC34] rounded-2xl px-5 py-2 text-white'>Learn more</a>
+            <p className='text-white opacity-90 text-center text-base'>{ data.description }</p>
+            
+            <a 
+              href={data.link} 
+              className="border border-[#82BC34] rounded-2xl px-5 py-2 text-white" 
+              style={{ background: 'linear-gradient(108.46deg, rgba(255, 255, 255, 0.264) 0%, rgba(255, 255, 255, 0.066) 100%)' }}
+            >
+              Learn more
+            </a>
+
+        
+        
         <div className='flex flex-col items-center mt-[100px] md:mt-[200px]'>
               <img src={mouseIcon} alt="" />
               <div className='text-white'>Scroll to view more</div>

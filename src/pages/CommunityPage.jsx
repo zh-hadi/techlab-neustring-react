@@ -70,7 +70,8 @@ const CommunityPage = () => {
 
 
   const apidata = useDataContext();
-  const data = apidata?.apiData?.data?.comminutePage ?? staticData
+  // const data = apidata?.apiData?.data?.comminutePage ?? staticData
+  const data =  staticData
   // console.log(apidata.apiData.data.comminutePage);
 
 

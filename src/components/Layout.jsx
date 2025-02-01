@@ -12,6 +12,8 @@ import { usePageColors } from '../contexts/PagesColorContext';
 import { useSolutionPageIndex } from '../contexts/SolutionPageContext';
 import ScrollPageHandler from "./ScrollPageHandler";
 
+import { useDataContext } from '../contexts/DataContext';
+
 import { NavLink } from 'react-router-dom';
 import MobileMenu from './MobileMenu';
 
@@ -24,6 +26,15 @@ const pageVariants = {
 };
 
 const Layout = () => {
+
+  const exampleUrl = '#';
+
+  const apidata = useDataContext();
+    
+  const urlData = apidata?.apiData?.data?.linkdinUrl || exampleUrl
+
+
+
   const { color } = useContext(ColorContext);
   const [isScrolling, setIsScrolling] = useState(false);
   const [timeoutId, setTimeoutId] = useState(null);
@@ -107,52 +118,54 @@ const Layout = () => {
       setTouchStartY(event.touches[0].clientY); // Capture the starting point of the touch
     };
     
+    
     const handleTouchEnd = (event) => {
-      setTouchEndY(event.changedTouches[0].clientY); // Capture the end point of the touch
+      const touchEndY = event.changedTouches[0].clientY; // Capture touch end position
+      const deltaY = touchStartY - touchEndY; // Calculate swipe distance
     
-      const deltaY = touchStartY - touchEndY; // Calculate the swipe distance
-
-      console.log("deltay " + touchStartY + "      " + touchEndY + " " + deltaY)
+      // Ignore taps (if touch start & end positions are nearly the same)
+      if (Math.abs(deltaY) < 50) return;
     
-      const container = document.querySelector(".content-container"); // Adjust this selector to your scrolling container
-      const containerHeight = container.offsetHeight; // Height of the container
-      console.log("height of the container ===== "+ containerHeight);
-      const contentHeight = container.scrollHeight; // Total scrollable height
-      console.log("height of the scroll ===== "+ contentHeight);
-      const scrollTop = container.scrollTop; // Current scroll position
-      
+      console.log("DeltaY:", deltaY);
+    
+      const container = document.querySelector(".content-container"); // Adjust selector if needed
+      if (!container) return; // Prevent errors if container is missing
+    
+      const containerHeight = container.offsetHeight;
+      const contentHeight = container.scrollHeight;
+      const scrollTop = container.scrollTop;
+    
+      console.log("Container height:", containerHeight);
+      console.log("Content height:", contentHeight);
+      console.log("Scroll position:", scrollTop);
+    
       const isAtBottom = scrollTop + containerHeight >= contentHeight;
       const isAtTop = scrollTop === 0;
     
-      if (Math.abs(deltaY) > 50) {
-        // Determine swipe direction
-        if (deltaY > 0 && isAtBottom) {
-          // Swipe up and at the bottom of the container
-          if (location.pathname === "/solution" && solIndex.solutionIndex < 6) {
-            solIndex.setSolutionIndex(solIndex.solutionIndex + 1);
-          } else {
-            solIndex.setSolutionIndex(0);
-            const currentIndex = routes.findIndex((route) => route === location.pathname);
-            const nextIndex = (currentIndex + 1) % routes.length;
-            navigate(routes[nextIndex]);
-          }
-        } else if (deltaY < 0 && isAtTop) {
-          // Swipe down and at the top of the container
-          if (solIndex.solutionIndex > 0) {
-            solIndex.setSolutionIndex(solIndex.solutionIndex - 1);
-          } else {
-            const currentIndex = routes.findIndex((route) => route === location.pathname);
-            const prevIndex = (currentIndex - 1 + routes.length) % routes.length;
-            navigate(routes[prevIndex]);
-          }
+      // Handle swipe gestures, NOT taps
+      if (deltaY > 50 && isAtBottom) {
+        // Swipe up at bottom
+        if (location.pathname === "/solution" && solIndex.solutionIndex < 6) {
+          solIndex.setSolutionIndex(solIndex.solutionIndex + 1);
+        } else {
+          solIndex.setSolutionIndex(0);
+          const currentIndex = routes.findIndex((route) => route === location.pathname);
+          const nextIndex = (currentIndex + 1) % routes.length;
+          navigate(routes[nextIndex]);
+        }
+      } else if (deltaY < -50 && isAtTop) {
+        // Swipe down at top
+        if (solIndex.solutionIndex > 0) {
+          solIndex.setSolutionIndex(solIndex.solutionIndex - 1);
+        } else {
+          const currentIndex = routes.findIndex((route) => route === location.pathname);
+          const prevIndex = (currentIndex - 1 + routes.length) % routes.length;
+          navigate(routes[prevIndex]);
         }
       }
     };
     
-  
     
-
-
 
     const [solutionIndex, setSolutionIndex] = useState(0);
 
@@ -238,10 +251,10 @@ const Layout = () => {
 
         >
           <div className="px-5 py-2 bg-gradient-to-r from-[rgba(255,255,255,0.4)] to-[rgba(255,255,255,0.2)] w-full md:w-3/5 mx-auto flex items-center justify-between rounded-lg z-10">
-            <a href="">
+            <a href="/">
               <img className='w-[120px] md:w-[200px]' src={logo} alt="Logo" />
             </a>
-            <a href="" style={{ color: headerButton, border: `1px solid ${headerButton}`}}  className={` px-4 py-1  rounded-md text-md  font-semibold`}>Linkedin</a>
+            <a href={urlData} target="_blank" style={{ color: headerButton, border: `1px solid ${headerButton}`}}  className={` px-4 py-1  rounded-md text-md  font-semibold`}>Linkedin</a>
           
 
            <MobileMenu />

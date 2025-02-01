@@ -82,7 +82,7 @@ const Page7 = () => {
                     <h2 className='text-[#2870AE] text-3xl md:text-6xl font-bold'>{data.title}</h2>
                     <p className='text-[#2870AE] text-sm md:text-base'>{data.description}</p>
                     
-                    <div className='w-full flex justify-center'>
+                    <div className='w-full flex justify-center z-10'>
                         <form onSubmit={handleSubmit} className='flex flex-col md:flex-row gap-3 items-center'>
                             <input 
                                 className='p-2 border border-[#ADD24F99] rounded-md'

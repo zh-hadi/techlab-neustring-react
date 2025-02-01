@@ -80,7 +80,21 @@ const Page4 = () => {
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col p-5 md:p-10 justify-between w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px]"
               // style={{ width: '428px', height: '405px' }}
             >
-              <div 
+
+
+            {data.service.map((item, index) => (
+                <div 
+                  key={index}
+                  className={ `text-white px-3 py-1 rounded-md text-sm md:text-3xl ${index % 2=== 0 ? ' self-start': ' self-end'}`}
+                  style={{ 
+                    background: 'linear-gradient(108.46deg, rgba(21, 108, 221, 0.264) 0%, rgba(21, 108, 221, 0.132) 100%)' 
+                  }}
+                >
+                  {item}
+                </div>
+                 
+              ))}
+              {/* <div 
                 className="text-white px-3 py-1 rounded-md text-sm md:text-3xl self-start" 
                 style={{ 
                   background: 'linear-gradient(108.46deg, rgba(21, 108, 221, 0.264) 0%, rgba(21, 108, 221, 0.132) 100%)' 
@@ -103,7 +117,7 @@ const Page4 = () => {
                 }}
               >
                 Business Case
-              </div>
+              </div> */}
           
             </div>
         </div>
@@ -114,8 +128,8 @@ const Page4 = () => {
     </div>
 
     <div 
-    className='hidden md:block w-[6px] h-[150px]  absolute -top-20 left-1/2 -translate-x-1/2 opacity-50 z-5' 
-    style={{background: 'linear-gradient(180deg, #7F7FD5 0%, rgba(134, 168, 231, 0.5) 50%, rgba(145, 234, 228, 0) 100%)'}}
+      className='hidden md:block w-[6px] h-[150px]  absolute -top-20 left-1/2 -translate-x-1/2 opacity-50 z-50' 
+      style={{background: 'linear-gradient(180deg, #7F7FD5 0%, rgba(134, 168, 231, 0.5) 50%, rgba(145, 234, 228, 0) 100%)'}}
     >
 
     </div>
