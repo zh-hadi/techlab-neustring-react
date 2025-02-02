@@ -13,10 +13,10 @@ const motionLeft = {
   initial: { opacity: 0 },
   animate: {
     opacity: [0, 1, 1],
-    x: [-300, 100, 0], 
+    x: [-300, 20, 0], 
     transition: {
-      duration: 1, 
-      times: [0, 0.6, 1], 
+      duration: 1.2, 
+      times: [0, 0.7, 1], 
       ease: "easeIn", 
     },
   },
@@ -27,10 +27,10 @@ const motionRight = {
   initial: {opacity: 0},
   animate: {
     opacity: [0, 1, 1],
-    x: [300, -100, 0], 
+    x: [300, -20, 0], 
     transition: {
-      duration: 1, 
-      times: [0, .6, 1],  
+      duration: 1.2, 
+      times: [0, .7, 1],  
       ease: "easeIn", 
     },
   },

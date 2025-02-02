@@ -19,11 +19,48 @@ import MobileMenu from './MobileMenu';
 
 
 
+// const pageVariants = {
+//   initial: { y: 1000, opacity: 0 },
+//   animate: { y: [1000, -30, 0], opacity: 1 },
+//   exit: { y: 1000, opacity: 0 },
+// };
+
 const pageVariants = {
   initial: { y: 1000, opacity: 0 },
-  animate: { y: [1000, -30, 0], opacity: 1 },
-  exit: { y: 1000, opacity: 0 },
+  animate: { 
+    y: [1000, -30, 0], 
+    opacity: 1, 
+    transition: {
+      y: {
+        type: "spring", // Use spring for more natural movement
+        stiffness: 100, // Controls the "springiness"
+        damping: 25, // Controls how quickly the animation slows down
+        duration: 0.8 // Duration for the `y` movement
+      },
+      opacity: {
+        ease: "easeInOut", // Smooth easing for opacity change
+        duration: 0.6 // Duration for opacity change
+      }
+    }
+  },
+  exit: { 
+    y: 1000, 
+    opacity: 0, 
+    transition: {
+      y: {
+        type: "spring",
+        stiffness: 100,
+        damping: 25,
+        duration: 0.8
+      },
+      opacity: {
+        ease: "easeInOut",
+        duration: 0.6
+      }
+    }
+  }
 };
+
 
 const Layout = () => {
 

@@ -15,6 +15,43 @@ const pageVariants = {
     exit: { y: "-100%", opacity: 0 },
 };
 
+// const pageVariants = {
+//     initial: { y: "-100%", opacity: 0 },
+//     animate: { 
+//       y: ['105%', '-5%', 0], // The element will start below, then overshoot a bit before settling.
+//       opacity: 1,
+//       transition: {
+//         y: {
+//           type: "spring", // Smooth spring motion
+//           stiffness: 150, // A bit more stiffness for a quicker animation
+//           damping: 25, // Softens the bounce of the spring
+//           duration: 1, // Adjusts how long the animation takes to settle
+//         },
+//         opacity: {
+//           ease: "easeInOut", // Smooth easing for opacity change
+//           duration: 0.8, // Duration for opacity transition
+//         }
+//       }
+//     },
+//     exit: { 
+//       y: "-100%", 
+//       opacity: 0,
+//       transition: {
+//         y: {
+//           type: "spring",
+//           stiffness: 150,
+//           damping: 25,
+//           duration: 1, // Duration of exit
+//         },
+//         opacity: {
+//           ease: "easeInOut",
+//           duration: 0.6, // Duration of opacity fade-out
+//         }
+//       }
+//     }
+//   };
+  
+
 const Page7 = () => {
     const [formData, setFormData] = useState({
         companyName: '',
