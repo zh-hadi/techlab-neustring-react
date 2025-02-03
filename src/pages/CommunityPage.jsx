@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { Carousel } from 'react-responsive-carousel';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { ColorContext } from '../App'
 import { useLocation } from 'react-router-dom'
 import companyLogo from '../assets/company-logo.svg'
@@ -74,6 +74,19 @@ const CommunityPage = () => {
   const data =  staticData
   // console.log(apidata.apiData.data.comminutePage);
 
+  // State for handling "Read More" functionality
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const handleToggleDescription = () => {
+    setIsExpanded(!isExpanded);
+  };
+
+  // Conditionally shorten description to 30 characters or show full text
+  const shortenedDescription =
+    data.post.description.length > 120
+      ? data.post.description.substring(0, 120) + '...'
+      : data.post.description;
+
 
   return (
     <>
@@ -108,8 +121,11 @@ const CommunityPage = () => {
 
           <div className='flex flex-col gap-3'>
             <h2 className='font-bold text-3xl md:text-6xl text-white'>{data.book.title}</h2>
-            <p className='text-sm md:text-xl text-white'>{data.book.description}</p>
-            <a href={data.book.url} className='text-lg md:text-2xl  bg-white bg-opacity-20 text-white rounded-3xl px-3 py-2 self-start'>Book a Demo</a>
+            <p className='text-sm md:text-lg text-white'>
+              
+              {data.book.description}
+            </p>
+            <a href={data.book.url} className='text-sm   bg-white bg-opacity-20 text-white rounded-lg px-3 py-2 self-start'>Book a Demo</a>
           </div>
 
           {/* background image */}
@@ -130,11 +146,52 @@ const CommunityPage = () => {
           </div>
           <div className='flex flex-col gap-3'>
             <h2 className='text-2xl font-medium text-slate-800'>{data.post.title} <span className='bg-green-gradient bg-clip-text text-transparent'>{data.post.author}</span> </h2>
-            <p className="text-[#0E2C46]">{data.post.description }</p>
+            <p className=" text-[#0E2C46]">
+                {isExpanded ? data.book.description : shortenedDescription}
+              
+              {data.book.description.length > 120 && (
+                <a
+                  onClick={handleToggleDescription}
+                  className="text-sm text-blue-400 "
+                >
+                  {isExpanded ? 'Read Less' : 'Read More'}
+                </a>
+
+            )}
+            </p>
+            {/* <p className="text-[#0E2C46]">{data.post.description }</p> */}
           </div>
         </div>
 
-        <SpotlightCard />
+        {/* <SpotlightCard /> */}
+
+        <div className='bg-white p-3  md:p-10 rounded-xl col-span-2'>
+          <div className='flex flex-col md:flex-row'>
+            <div className='flex flex-col w-full md:min-w-[300px]'>
+              <div>
+                <div className="flex items-center gap-3 mb-3">
+
+                    <img src={SunIcon} alt="" />
+                    <h2 className="bg-green-gradient bg-clip-text text-transparent">Community Spotlight</h2>
+
+                    </div>
+                    <div className="text-[#0E2C46] text-3xl mb-4 font-semibold">Orange telecom</div>
+                </div>
+              <div className=' md:border-l md:border-t  md:border-b  p-3 border-[#82BC34] bg-community-card md:rounded-l-xl rounded-t-xl md:rounded-tr-none'>
+                <img src={CommunityThemeLogoImage} alt="" />
+              </div>
+            </div>
+            <div className='md:border rounded-b-lg md:rounded-bl-none md:border-[#82BC34] bg-community-card p-4 flex flex-col gap-4 md:rounded-r-xl md:rounded-tl-xl'>
+              <h3 className='text-xl font-semibold'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, blanditiis!</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque necessitatibus reprehenderit eius excepturi laudantium ea in repellat ipsum sed eveniet.</p>
+
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque necessitatibus reprehenderit eius excepturi laudantium ea in repellat ipsum sed eveniet.</p>
+
+              <div>Lorem, ipsum dolor.
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div className="bg-communtiy-head rounded-3xl col-span-2">
 
