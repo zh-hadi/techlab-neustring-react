@@ -70,7 +70,7 @@ const pageVariants = {
     transition: {
       y: {
         times: [0, 0.8, 1],
-        duration: 2,  
+        duration: 1.6,  
         ease: "easeInOut", 
       },
       opacity: {

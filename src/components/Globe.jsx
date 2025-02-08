@@ -8,6 +8,8 @@ import mappng from '../assets/map-earth.png';
 const Globe = () => {
   const globeMaterial = new THREE.MeshStandardMaterial({
     // map: new THREE.TextureLoader().load(mappng), // Replace with a texture URL
+    // map: new THREE.TextureLoader().load("https://unpkg.com/three-globe@2.41.12/example/img/earth-night.jpg"), // Replace with a texture URL
+    // bumpMap: new THREE.TextureLoader().load("https://unpkg.com/three-globe/example/img/earth-topographic.jpg"), // Optional for terrain effect
     map: new THREE.TextureLoader().load("//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"), // Replace with a texture URL
     bumpMap: new THREE.TextureLoader().load("//unpkg.com/three-globe/example/img/earth-topology.png"), // Optional for terrain effect
     bumpScale: 0.05,
