@@ -25,41 +25,76 @@ import MobileMenu from './MobileMenu';
 //   exit: { y: 1000, opacity: 0 },
 // };
 
+// const pageVariants = {
+//   initial: { y: 1000, opacity: 0 },
+//   animate: { 
+//     y: [1000, -200, 0, -100, 0],  // Shake effect (up, down, back to center)
+//     opacity: 1,
+//     transition: {
+//       y: {
+//         type: "spring",
+//         stiffness: 150,  // Higher stiffness for more bouncy shake
+//         damping: 25,     // Controls how quickly it slows down
+//         duration: 1.2,   // Duration for the movement (shake)
+//       },
+//       opacity: {
+//         ease: "easeInOut", 
+//         duration: 0.8,
+//       },
+//     },
+//   },
+//   exit: { 
+//     y: 1000, 
+//     opacity: 0, 
+//     transition: {
+//       y: {
+//         type: "spring",
+//         stiffness: 150,
+//         damping: 25,
+//         duration: 0.8,
+//       },
+//       opacity: {
+//         ease: "easeInOut",
+//         duration: 0.6,
+//       },
+//     },
+//   },
+// };
+
+
 const pageVariants = {
   initial: { y: 1000, opacity: 0 },
-  animate: { 
-    y: [1000, -30, 0], 
-    opacity: 1, 
+  animate: {
+    y: [1000, -20, 0],  // Shake effect (up, down, back to center)
+    opacity: 1,
     transition: {
       y: {
-        type: "spring", // Use spring for more natural movement
-        stiffness: 100, // Controls the "springiness"
-        damping: 25, // Controls how quickly the animation slows down
-        duration: 0.8 // Duration for the `y` movement
+        times: [0, 0.8, 1],
+        duration: 2,  
+        ease: "easeInOut", 
       },
       opacity: {
-        ease: "easeInOut", // Smooth easing for opacity change
-        duration: 0.6 // Duration for opacity change
-      }
-    }
+        ease: "easeInOut", // Smooth fade-in effect
+        duration: 0.8,     // Duration of opacity transition
+      },
+    },
   },
   exit: { 
     y: 1000, 
-    opacity: 0, 
+    opacity: 0,
     transition: {
       y: {
-        type: "spring",
-        stiffness: 100,
-        damping: 25,
-        duration: 0.8
+        ease: "easeInOut",  // Smooth exit movement
+        duration: 1.2,      // Duration of movement for exit
       },
       opacity: {
-        ease: "easeInOut",
-        duration: 0.6
-      }
-    }
-  }
+        ease: "easeInOut",  // Smooth fade-out effect
+        duration: 0.6,      // Duration of opacity transition for exit
+      },
+    },
+  },
 };
+
 
 
 const Layout = () => {
@@ -114,39 +149,106 @@ const Layout = () => {
 
 
 
-    const handleWheel = (event) => {
-      const { deltaY } = event; // Get the vertical scroll amount
-      const container = document.querySelector(".content-container"); // Adjust this selector to your scrolling container
-      const containerHeight = container.offsetHeight; // Height of the container
-      const contentHeight = container.scrollHeight; // Total scrollable height
-      const scrollTop = container.scrollTop; // Current scroll position
+    // const handleWheel = (event) => {
+    //   const { deltaY } = event; // Get the vertical scroll amount
+    //   const container = document.querySelector(".content-container"); // Adjust this selector to your scrolling container
+    //   const containerHeight = container.offsetHeight; // Height of the container
+    //   const contentHeight = container.scrollHeight; // Total scrollable height
+    //   const scrollTop = container.scrollTop; // Current scroll position
     
-      const isAtBottom = scrollTop + containerHeight >= contentHeight - 1; // Check if at the bottom
-      const isAtTop = scrollTop === 0; // Check if at the top
+    //   const isAtBottom = scrollTop + containerHeight >= contentHeight - 1; // Check if at the bottom
+    //   const isAtTop = scrollTop === 0; // Check if at the top
     
-      if (deltaY > 0 && isAtBottom) {
-        // Scrolling down and at the bottom of the container
-        if (location.pathname === '/solution' && solIndex.solutionIndex < 6) {
-          solIndex.setSolutionIndex(solIndex.solutionIndex + 1); // Increment solution index
-        } else {
-          solIndex.setSolutionIndex(0); // Reset solution index
-          const currentIndex = routes.findIndex((route) => route === location.pathname);
-          const nextIndex = (currentIndex + 1) % routes.length; // Move to the next route
-          navigate(routes[nextIndex]);
-        }
-      } else if (deltaY < 0 && isAtTop) {
-        // Scrolling up and at the top of the container
-        if (location.pathname === '/solution' && solIndex.solutionIndex > 0) {
-          solIndex.setSolutionIndex(solIndex.solutionIndex - 1); // Decrement solution index
-        } else {
-          const currentIndex = routes.findIndex((route) => route === location.pathname);
-          const prevIndex = (currentIndex - 1 + routes.length) % routes.length; // Move to the previous route
-          navigate(routes[prevIndex]);
-        }
-      }
-    };
+    //   if (deltaY > 0 && isAtBottom) {
+    //     // Scrolling down and at the bottom of the container
+    //     if (location.pathname === '/solution' && solIndex.solutionIndex < 6) {
+    //       solIndex.setSolutionIndex(solIndex.solutionIndex + 1); // Increment solution index
+    //     } else {
+    //       solIndex.setSolutionIndex(0); // Reset solution index
+    //       const currentIndex = routes.findIndex((route) => route === location.pathname);
+    //       const nextIndex = (currentIndex + 1) % routes.length; // Move to the next route
+    //       navigate(routes[nextIndex]);
+    //     }
+    //   } else if (deltaY < 0 && isAtTop) {
+    //     // Scrolling up and at the top of the container
+    //     if (location.pathname === '/solution' && solIndex.solutionIndex > 0) {
+    //       solIndex.setSolutionIndex(solIndex.solutionIndex - 1); // Decrement solution index
+    //     } else {
+    //       const currentIndex = routes.findIndex((route) => route === location.pathname);
+    //       const prevIndex = (currentIndex - 1 + routes.length) % routes.length; // Move to the previous route
+    //       navigate(routes[prevIndex]);
+    //     }
+    //   }
+    // };
     
     
+    let isNavigatingInProgress = false; // Flag to track whether navigation is in progress
+let isHandlingScroll = false; // To prevent multiple scrolls triggering in quick succession
+
+const handleWheel = (event) => {
+  // Prevent further actions if navigation is in progress
+  if (isNavigatingInProgress || isHandlingScroll) return;
+
+  const { deltaY } = event; // Get the vertical scroll amount
+  const container = document.querySelector(".content-container"); // Your container
+  const containerHeight = container.offsetHeight; // Height of the container
+  const contentHeight = container.scrollHeight; // Total scrollable height
+  const scrollTop = container.scrollTop; // Current scroll position
+
+  const isAtBottom = scrollTop + containerHeight >= contentHeight - 1; // Check if at the bottom
+  const isAtTop = scrollTop === 0; // Check if at the top
+
+  // Debounce the scroll event for smoother transitions
+  isHandlingScroll = true;
+
+  if (deltaY > 0 && isAtBottom) {
+    // Scrolling down and at the bottom of the container
+    if (location.pathname === '/solution' && solIndex.solutionIndex < 6) {
+      solIndex.setSolutionIndex(solIndex.solutionIndex + 1); // Increment solution index
+    } else {
+      // Set navigation flag to prevent multiple navigations at the same time
+      isNavigatingInProgress = true;
+      solIndex.setSolutionIndex(0); // Reset solution index
+      const currentIndex = routes.findIndex((route) => route === location.pathname);
+      const nextIndex = (currentIndex + 1) % routes.length; // Move to the next route
+      navigate(routes[nextIndex]);
+
+      // Reset navigation flag after a short delay (500ms)
+      setTimeout(() => {
+        isNavigatingInProgress = false;
+      }, 500); // Adjust this delay to control navigation speed
+    }
+  } else if (deltaY < 0 && isAtTop) {
+    // Scrolling up and at the top of the container
+    if (location.pathname === '/solution' && solIndex.solutionIndex > 0) {
+      solIndex.setSolutionIndex(solIndex.solutionIndex - 1); // Decrement solution index
+    } else {
+      // Set navigation flag to prevent multiple navigations at the same time
+      isNavigatingInProgress = true;
+
+      const currentIndex = routes.findIndex((route) => route === location.pathname);
+      const prevIndex = (currentIndex - 1 + routes.length) % routes.length; // Move to the previous route
+      navigate(routes[prevIndex]);
+
+      // Reset navigation flag after a short delay (500ms)
+      setTimeout(() => {
+        isNavigatingInProgress = false;
+      }, 500); // Adjust this delay based on your transition time
+    }
+  }
+
+  // Reset handling scroll state after a short timeout (debounce for smoother scrolling)
+  setTimeout(() => {
+    isHandlingScroll = false;
+  }, 150); // Adjust this timeout value to match your preferred smoothness
+};
+
+    
+
+
+
+
+
 
     const [touchStartY, setTouchStartY] = useState(0);
     const [touchEndY, setTouchEndY] = useState(0);
@@ -156,53 +258,117 @@ const Layout = () => {
     };
     
     
-    const handleTouchEnd = (event) => {
-      const touchEndY = event.changedTouches[0].clientY; // Capture touch end position
-      const deltaY = touchStartY - touchEndY; // Calculate swipe distance
+    // const handleTouchEnd = (event) => {
+    //   const touchEndY = event.changedTouches[0].clientY; // Capture touch end position
+    //   const deltaY = touchStartY - touchEndY; // Calculate swipe distance
     
-      // Ignore taps (if touch start & end positions are nearly the same)
-      if (Math.abs(deltaY) < 50) return;
+    //   // Ignore taps (if touch start & end positions are nearly the same)
+    //   if (Math.abs(deltaY) < 50) return;
     
-      console.log("DeltaY:", deltaY);
+    //   console.log("DeltaY:", deltaY);
     
-      const container = document.querySelector(".content-container"); // Adjust selector if needed
-      if (!container) return; // Prevent errors if container is missing
+    //   const container = document.querySelector(".content-container"); // Adjust selector if needed
+    //   if (!container) return; // Prevent errors if container is missing
     
-      const containerHeight = container.offsetHeight;
-      const contentHeight = container.scrollHeight;
-      const scrollTop = container.scrollTop;
+    //   const containerHeight = container.offsetHeight;
+    //   const contentHeight = container.scrollHeight;
+    //   const scrollTop = container.scrollTop;
     
-      console.log("Container height:", containerHeight);
-      console.log("Content height:", contentHeight);
-      console.log("Scroll position:", scrollTop);
+    //   console.log("Container height:", containerHeight);
+    //   console.log("Content height:", contentHeight);
+    //   console.log("Scroll position:", scrollTop);
     
-      const isAtBottom = scrollTop + containerHeight >= contentHeight;
-      const isAtTop = scrollTop === 0;
+    //   const isAtBottom = scrollTop + containerHeight >= contentHeight;
+    //   const isAtTop = scrollTop === 0;
     
-      // Handle swipe gestures, NOT taps
-      if (deltaY > 50 && isAtBottom) {
-        // Swipe up at bottom
-        if (location.pathname === "/solution" && solIndex.solutionIndex < 6) {
-          solIndex.setSolutionIndex(solIndex.solutionIndex + 1);
-        } else {
-          solIndex.setSolutionIndex(0);
-          const currentIndex = routes.findIndex((route) => route === location.pathname);
-          const nextIndex = (currentIndex + 1) % routes.length;
-          navigate(routes[nextIndex]);
-        }
-      } else if (deltaY < -50 && isAtTop) {
-        // Swipe down at top
-        if (solIndex.solutionIndex > 0) {
-          solIndex.setSolutionIndex(solIndex.solutionIndex - 1);
-        } else {
-          const currentIndex = routes.findIndex((route) => route === location.pathname);
-          const prevIndex = (currentIndex - 1 + routes.length) % routes.length;
-          navigate(routes[prevIndex]);
-        }
-      }
-    };
+    //   // Handle swipe gestures, NOT taps
+    //   if (deltaY > 50 && isAtBottom) {
+    //     // Swipe up at bottom
+    //     if (location.pathname === "/solution" && solIndex.solutionIndex < 6) {
+    //       solIndex.setSolutionIndex(solIndex.solutionIndex + 1);
+    //     } else {
+    //       solIndex.setSolutionIndex(0);
+    //       const currentIndex = routes.findIndex((route) => route === location.pathname);
+    //       const nextIndex = (currentIndex + 1) % routes.length;
+    //       navigate(routes[nextIndex]);
+    //     }
+    //   } else if (deltaY < -50 && isAtTop) {
+    //     // Swipe down at top
+    //     if (solIndex.solutionIndex > 0) {
+    //       solIndex.setSolutionIndex(solIndex.solutionIndex - 1);
+    //     } else {
+    //       const currentIndex = routes.findIndex((route) => route === location.pathname);
+    //       const prevIndex = (currentIndex - 1 + routes.length) % routes.length;
+    //       navigate(routes[prevIndex]);
+    //     }
+    //   }
+    // };
     
-    
+    let isNavigating = false; // Add a flag to track navigation state
+
+const handleTouchEnd = (event) => {
+  // Prevent navigation if it's already in progress
+  if (isNavigating) return;
+
+  const touchEndY = event.changedTouches[0].clientY; // Capture touch end position
+  const deltaY = touchStartY - touchEndY; // Calculate swipe distance
+  
+  // Ignore taps (if touch start & end positions are nearly the same)
+  if (Math.abs(deltaY) < 50) return;
+
+  console.log("DeltaY:", deltaY);
+
+  const container = document.querySelector(".content-container"); // Adjust selector if needed
+  if (!container) return; // Prevent errors if container is missing
+
+  const containerHeight = container.offsetHeight;
+  const contentHeight = container.scrollHeight;
+  const scrollTop = container.scrollTop;
+
+  console.log("Container height:", containerHeight);
+  console.log("Content height:", contentHeight);
+  console.log("Scroll position:", scrollTop);
+
+  const isAtBottom = scrollTop + containerHeight >= contentHeight;
+  const isAtTop = scrollTop === 0;
+
+  // Handle swipe gestures, NOT taps
+  if (deltaY > 50 && isAtBottom) {
+    // Swipe up at bottom
+    if (location.pathname === "/solution" && solIndex.solutionIndex < 6) {
+      solIndex.setSolutionIndex(solIndex.solutionIndex + 1);
+    } else {
+      // Set navigation flag to prevent multiple navigations at the same time
+      isNavigating = true;
+      solIndex.setSolutionIndex(0);
+      const currentIndex = routes.findIndex((route) => route === location.pathname);
+      const nextIndex = (currentIndex + 1) % routes.length;
+      navigate(routes[nextIndex]);
+
+      // Reset navigation flag after navigation (you can improve this based on your actual navigation completion)
+      setTimeout(() => {
+        isNavigating = false;
+      }, 500); // Adjust this delay to match your navigation transition time
+    }
+  } else if (deltaY < -50 && isAtTop) {
+    // Swipe down at top
+    if (solIndex.solutionIndex > 0) {
+      solIndex.setSolutionIndex(solIndex.solutionIndex - 1);
+    } else {
+      // Set navigation flag to prevent multiple navigations at the same time
+      isNavigating = true;
+      const currentIndex = routes.findIndex((route) => route === location.pathname);
+      const prevIndex = (currentIndex - 1 + routes.length) % routes.length;
+      navigate(routes[prevIndex]);
+
+      // Reset navigation flag after navigation (you can improve this based on your actual navigation completion)
+      setTimeout(() => {
+        isNavigating = false;
+      }, 500); // Adjust this delay to match your navigation transition time
+    }
+  }
+};
+
 
     const [solutionIndex, setSolutionIndex] = useState(0);
 
@@ -243,18 +409,34 @@ const Layout = () => {
       solIndex.setSolutionIndex(0)
     }
 
+
+    const [isVideoLoaded, setIsVideoLoaded] = useState(true);
+
+    const handleVideoLoaded = () => {
+      setIsVideoLoaded(true); // Video has loaded enough to play
+    };
+
+
     
   return (
     <>
  
  {
   isVideoBackground && location.pathname === '/home' ? (
-    <div className="h-screen w-full z-50">
+    <div className="h-screen w-full z-50 ">
       <div className="relative h-screen w-full">
-        <video autoPlay loop muted className="video-bg h-screen w-full object-cover">
-          <source src={HeroVideo} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        { isVideoLoaded && (
+          <video
+            autoPlay
+            loop
+            muted
+            className="video-bg h-screen w-full object-cover"
+            onCanPlayThrough={handleVideoLoaded} // Trigger when the video can play through
+          >
+            <source src={HeroVideo} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        )}
         <div className="absolute top-0 right-0 bottom-0 left-0 bg-[#0E2C4699]"></div>
         <img className="absolute bottom-5 right-5" src={NeuStringSideLogo} alt="" />
       </div>

@@ -14,6 +14,7 @@ export default {
         'blue-red-gradient': 'linear-gradient(78.86deg, #45A2D1 6.42%, #F75C62 96.24%)',
         'community-card': 'linear-gradient(130.34deg, rgba(217, 238, 246, 0.3) 0%, rgba(113, 135, 184, 0.3) 100%)',
         'gray-gradient': 'linear-gradient(78.86deg, rgba(216, 216, 216, 0.3) 6.42%, rgba(208, 208, 208, 0.3) 96.24%)',
+        'card-one': 'rgba(27, 79, 138, 1)',
       
       },
       fontFamily: {

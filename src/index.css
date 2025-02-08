@@ -75,6 +75,11 @@ html, body {
 }
 
 
+.card_1_color {
+  color: rgba(27, 79, 138, 1)
+}
+
+
 /* .tag {
   border-radius: 0 0 10px 0;
 }

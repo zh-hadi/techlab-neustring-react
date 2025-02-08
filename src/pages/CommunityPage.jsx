@@ -21,6 +21,9 @@ import { useDataContext } from '../contexts/DataContext'
 import 'swiper/css';
 import 'swiper/css/navigation';
 import '../assets/style/swipercss.css';
+import Card1 from '../components/card/Card1';
+import Card2 from '../components/card/Card2';
+import Card3 from '../components/card/Card3';
 
 
 const CommunityPage = () => {
@@ -110,6 +113,11 @@ const CommunityPage = () => {
           </div>
           <div className='text-transparent bg-clip-text bg-communtiy-head text-3xl md:text-6xl font-bold text-center'>Connect, Share, Grow</div>
         </div>
+
+
+        <Card1 />
+        <Card2 />
+        <Card3 />
 
 
         <div className="h-[572px] w-full relative bg-[#2997FF] rounded-3xl p-10 flex flex-col justify-between">
