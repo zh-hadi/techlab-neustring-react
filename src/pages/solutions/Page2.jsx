@@ -55,7 +55,7 @@ const Page2 = () => {
         animate="animate"
         exit="exit"
         variants={pageVariants}
-        transition={{ duration: 1, ease: "easeInOut" }}
+        transition={{ duration: 2, ease: "easeInOut" }}
         className='w-full md:w-4/5 mx-auto md:h-full flex justify-between items-center pb-10 mb:pb-0'>
 
 

@@ -30,7 +30,7 @@ const Page6 = () => {
         
           initial={{ opacity: 0, x: -300 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 1.4 }}
         >
           <div className='w-full md:w-2/3 mx-auto flex flex-col gap-5 items-start'>
             <img className='size-24' src={PlaneIcon} alt="" />
@@ -45,7 +45,7 @@ const Page6 = () => {
         
           initial={{ opacity: 0, y: 600 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: .7 }}
+          transition={{ duration: .8 }}
         >
             <div className='relative w-[120px] h-[120px] mx-auto mb-5 md:mb-0'>
               <div className="w-[120px] h-[120px] border-[20px] border-[#44A8FF] rounded-full relative">
@@ -69,7 +69,7 @@ const Page6 = () => {
         
           initial={{ opacity: 0, x: 300 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 1.4 }}
         >
           <div className='relative pt-0 md:pt-20 '>
               <div className='flex justify-center items-center w-full h-full'>

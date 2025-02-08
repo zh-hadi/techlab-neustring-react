@@ -37,7 +37,7 @@ const Page1 = () => {
         
           initial={{ opacity: 0, x: -200 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 1.5 }}
         >
           <div className='w-full md:w-2/3 mx-auto flex flex-col gap-5 items-start p-2'>
     
@@ -53,7 +53,7 @@ const Page1 = () => {
         
           initial={{ opacity: 0, x: 200 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 1 }}
         >
 
           <div className='w-full h-[300px] md:h-[600px] '>

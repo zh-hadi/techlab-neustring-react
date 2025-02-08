@@ -7,13 +7,37 @@ import Bg_logo from '../../assets/page_7_logo.svg';
 import { useDataContext } from '../../contexts/DataContext';
 
 const pageVariants = {
-    initial: { y: "-100%", opacity: 0 }, 
-    animate: { 
-        y: ['105%', "-5%", 0], 
-        opacity: 1 
+    initial: { y: 1000, opacity: 0 },
+    animate: {
+      y: [1000, -20, 0],  // Shake effect (up, down, back to center)
+      opacity: 1,
+      transition: {
+        y: {
+          times: [0, 0.8, 1],
+          duration: 2,  
+          ease: "easeInOut", 
+        },
+        opacity: {
+          ease: "easeInOut", // Smooth fade-in effect
+          duration: 0.8,     // Duration of opacity transition
+        },
+      },
     },
-    exit: { y: "-100%", opacity: 0 },
-};
+    exit: { 
+      y: 1000, 
+      opacity: 0,
+      transition: {
+        y: {
+          ease: "easeInOut",  // Smooth exit movement
+          duration: 1.2,      // Duration of movement for exit
+        },
+        opacity: {
+          ease: "easeInOut",  // Smooth fade-out effect
+          duration: 0.6,      // Duration of opacity transition for exit
+        },
+      },
+    },
+  };
 
 // const pageVariants = {
 //     initial: { y: "-100%", opacity: 0 },
@@ -112,7 +136,7 @@ const Page7 = () => {
                 initial="initial"
                 animate="animate"
                 variants={pageVariants}
-                transition={{ duration: 1, ease: "easeInOut" }}
+                transition={{ duration: 1.4, ease: "easeInOut" }}
                 className='w-full md:w-4/5 h-full mx-auto flex justify-between z-10 pb-20 mb:pb-0'
             >
                 <div className='px-10 pt-5 pb-20 md:pb-0 md:pt-20 mx-auto text-center flex flex-col gap-5'>
