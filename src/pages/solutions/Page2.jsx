@@ -67,7 +67,7 @@ const Page2 = () => {
             <div className='flex flex-col gap-5 w-full md:w-4/5 mx-auto'>
                 {data.map((item, index)=> (
                 <div key={item.title} className={` w-full md:w-2/3 p-3 bg-white bg-opacity-30 rounded-md flex flex-col md:flex-row gap-5 ${index % 2 === 0 ? 'self-center md:self-start': 'self-center md:self-end'}`}>
-                    <img className='w-[120px] h-[120px]' src={solutionIcons[index%3]} alt="" />
+                    <img className='w-[120px] h-[120px] mx-auto md:mx-0' src={solutionIcons[index%3]} alt="" />
                     <div className='flex flex-col gap-2'>
                         <h2 className='text-[#2870AE] font-bold text-xl'>{item.title}</h2>
                         <p className='text-[#2870AE] text-sm'>{item.description}</p>
