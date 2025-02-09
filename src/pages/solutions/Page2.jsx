@@ -6,6 +6,7 @@ import SolutionIcon3 from '../../assets/solutionIcon3.svg'
 import vectorline from '../../assets/vectorline.svg'
 
 import { useDataContext } from '../../contexts/DataContext';
+import { useImages } from '../../contexts/ImageContext'
 
 const pageVariants = {
     initial: { y: "-100%", opacity: 0 }, 
@@ -19,6 +20,8 @@ const pageVariants = {
   
 
 const Page2 = () => {
+
+    const Images = useImages();
 
     const staticData = [
        
@@ -40,7 +43,7 @@ const Page2 = () => {
             
     ];
 
-    const solutionIcons = [SolutionIcon1, SolutionIcon2, SolutionIcon3];
+    const solutionIcons = [Images.SolutionIcon1, Images.SolutionIcon2, Images.SolutionIcon3];
 
 
     const apidata = useDataContext();
@@ -64,7 +67,7 @@ const Page2 = () => {
             <div className='flex flex-col gap-5 w-full md:w-4/5 mx-auto'>
                 {data.map((item, index)=> (
                 <div key={item.title} className={` w-full md:w-2/3 p-3 bg-white bg-opacity-30 rounded-md flex flex-col md:flex-row gap-5 ${index % 2 === 0 ? 'self-center md:self-start': 'self-center md:self-end'}`}>
-                    <div className='mx-auto md:mx-0'><img className='w-[120px] h-[120px]' src={solutionIcons[index%3]} alt="" /></div>
+                    <img className='w-[120px] h-[120px]' src={solutionIcons[index%3]} alt="" />
                     <div className='flex flex-col gap-2'>
                         <h2 className='text-[#2870AE] font-bold text-xl'>{item.title}</h2>
                         <p className='text-[#2870AE] text-sm'>{item.description}</p>
