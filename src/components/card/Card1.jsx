@@ -2,7 +2,7 @@ import React from 'react'
 import Image1 from '../../assets/card_com_1.png';
 import LocationIcon from '../../assets/location-icon.svg'
 
-const Card1 = () => {
+const Card1 = ({data}) => {
   return (
     <div>
         <div 
@@ -42,15 +42,15 @@ const Card1 = () => {
                             </svg>
 
                     </div>
-                    <span>Feb 4-6 Dubai</span>
+                    <span>{data.location}</span>
                 </div>
             </div>
             <div className='flex flex-col justify-start gap-5'>
-                <h2 className='text-4xl font-bold card_1_color'>Capacity Middle East 2025</h2>
-                <p className='card_1_color text-xl'>{`The leading meeting place for the people shaping the MENA region's digital infrastructure.`}</p>
+                <h2 className='text-4xl font-bold card_1_color'>{data.title}</h2>
+                <p className='card_1_color text-xl'>{data.description}</p>
                 <div>
 
-                <a className='card_1_color px-3 py-2 rounded-md text-sm self-stretch font-semibold' style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)'}} href="">Learn More</a>
+                <a className='card_1_color px-3 py-2 rounded-md text-sm self-stretch font-semibold' style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)'}} href={data.url}>Learn More</a>
                 </div>
             </div>
         </div>

@@ -73,8 +73,10 @@ const CommunityPage = () => {
 
 
   const apidata = useDataContext();
-  // const data = apidata?.apiData?.data?.comminutePage ?? staticData
-  const data =  staticData
+  const data = apidata?.apiData?.data?.comminutePage ?? staticData
+  // const data =  staticData
+  console.log(data)
+  console.log(apidata)
   // console.log(apidata.apiData.data.comminutePage);
 
   // State for handling "Read More" functionality
@@ -91,6 +93,7 @@ const CommunityPage = () => {
       : data.post.description;
 
 
+     
   return (
     <>
 
@@ -115,9 +118,18 @@ const CommunityPage = () => {
         </div>
 
 
-        <Card1 />
-        <Card2 />
-        <Card3 />
+        {data.cards.map((item, index) => {
+            if (item.component === 1) {
+                return <Card1 key={index} data={item} />;
+            } else if (item.component === 2) {
+                return <Card2 key={index} data={item} />;
+            } else if (item.component === 3) {
+                return <Card3 key={index} data={item} />;
+            }
+            return null; // If no matching component
+        })}
+        {/* <Card2 />
+        <Card3 /> */}
 
 
         <div className="h-[572px] w-full relative bg-[#2997FF] rounded-3xl p-10 flex flex-col justify-between">
@@ -171,7 +183,7 @@ const CommunityPage = () => {
           </div>
         </div>
 
-        {/* <SpotlightCard /> */}
+        {/* <SpotlightCard />  this old*/}
 
         <div className='bg-white p-3  md:p-10 rounded-xl col-span-2'>
           <div className='flex flex-col md:flex-row'>
@@ -186,28 +198,31 @@ const CommunityPage = () => {
                     <div className="text-[#0E2C46] text-3xl mb-4 font-semibold">Orange telecom</div>
                 </div>
               <div className=' md:border-l md:border-t  md:border-b  p-3 border-[#82BC34] bg-community-card md:rounded-l-xl rounded-t-xl md:rounded-tr-none'>
-                <img src={CommunityThemeLogoImage} alt="" />
+                <img src={data.card.image} alt="" />
               </div>
             </div>
             <div className='md:border rounded-b-lg md:rounded-bl-none md:border-[#82BC34] bg-community-card p-4 flex flex-col gap-4 md:rounded-r-xl md:rounded-tl-xl'>
-              <h3 className='text-xl font-semibold'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, blanditiis!</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque necessitatibus reprehenderit eius excepturi laudantium ea in repellat ipsum sed eveniet.</p>
+              <h3 className='text-xl font-semibold'>{data.card.title}</h3>
+              {/* <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque necessitatibus reprehenderit eius excepturi laudantium ea in repellat ipsum sed eveniet.</p> */}
 
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque necessitatibus reprehenderit eius excepturi laudantium ea in repellat ipsum sed eveniet.</p>
+              <p>{data.card.description}</p>
 
-              <div>Lorem, ipsum dolor.
+              <div>{data.card.author}
               </div>
             </div>
           </div>
         </div>
 
+
+
+
         <div className="bg-communtiy-head rounded-3xl col-span-2">
 
         <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
         {data.slider.map((item, index) => (
-            <SwiperSlide key={index}>
+            <SwiperSlide key={index} className='h-[500px]'>
                <div className='p-[2px] relative rounded-3xl'>
-                  <img className='w-full  rounded-3xl' src={item.image} alt="" />
+                  <img className='w-full h-[500px]  rounded-3xl' src={item.image} alt="" />
                   <h2 className='p-1 md:p-4 absolute  bottom-1 md:bottom-10 left-1 md:left-10 text-white bg-gray-gradient text-sm md:text-4xl font-medium  rounded-xl bg-opacity-50'>{ item.title} </h2>
                 </div>
             </SwiperSlide>
@@ -222,6 +237,8 @@ const CommunityPage = () => {
           
           </Swiper>
         </div>
+
+        <div className='h-[100px] w-full'></div>
 
 
         

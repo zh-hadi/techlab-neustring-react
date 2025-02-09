@@ -2,7 +2,7 @@ import React from 'react'
 import Image1 from '../../assets/card_com_2.png';
 import LocationIcon from '../../assets/location-icon.svg'
 
-const Card2 = () => {
+const Card2 = ({data}) => {
   return (
     <div>
         <div 
@@ -23,10 +23,10 @@ const Card2 = () => {
                             </svg>
 
                     </div>
-                    <span>Mar 3-6 - Barcelona</span>
+                    <span>{data.location}</span>
                 </div>
-                <h2 className='text-4xl font-bold text-white'>Mobile World Congress</h2>
-                <p className='text-white text-xl'>{`The Mobile World Congress (MWC) Barcelona is the world's leading event for the mobile industry.`}</p>
+                <h2 className='text-4xl font-bold text-white'>{data.title}</h2>
+                <p className='text-white text-xl'>{data.description}</p>
             </div>
            
         </div>

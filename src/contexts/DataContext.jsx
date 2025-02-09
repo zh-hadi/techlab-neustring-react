@@ -11,6 +11,7 @@ const DataContextProvider = ({ children }) => {
       try {
         // Replace with your actual API endpoint
         const response = await fetch("https://neustring.redsmail.xyz/api/data");
+        // const response = await fetch("http://localhost:8000/api/data");
         const data = await response.json();
         setApiData(data); // Update the context with the fetched data
       } catch (error) {
