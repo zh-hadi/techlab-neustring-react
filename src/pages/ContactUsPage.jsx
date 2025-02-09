@@ -7,8 +7,11 @@ import IphoneIcon from '../assets/apple-icon.svg'
 import PlayStoreIcon from '../assets/play-store.svg'
 
 import { useDataContext } from '../contexts/DataContext'
+import { useImages } from '../contexts/ImageContext'
 
 const ContactUsPage = () => {
+
+  const Images = useImages();
 
   const staticData = {
     title_1: 'Connect with NeuString',
@@ -54,7 +57,7 @@ const ContactUsPage = () => {
         <div className="w-full max-w-full flex justify-center">
           <img 
             className="h-auto w-full max-w-[300px] sm:max-w-[400px] md:max-w-[450px] lg:max-w-[500px]" 
-            src={PhoneLogo} 
+            src={Images.contactPage} 
             alt="Phone Logo" 
           />
         </div>

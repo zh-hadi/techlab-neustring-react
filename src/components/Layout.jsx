@@ -96,6 +96,28 @@ const pageVariants = {
 };
 
 
+// second layer motion 
+const pageVariants2 = {
+  initial: { opacity: 0 }, // Start with opacity 0
+  animate: { 
+    opacity: 1, // Fade in to opacity 1
+    transition: {
+      opacity: {
+        ease: "easeInOut", // Smooth transition easing
+        duration: 2,        // Duration of 1 second for opacity
+      },
+    },
+  },
+  exit: { 
+    opacity: 0, // Fade out to opacity 0
+    transition: {
+      opacity: {
+        ease: "easeInOut", // Smooth transition easing for exit
+        duration: 2,        // Duration of 1 second for opacity
+      },
+    },
+  },
+};
 
 const Layout = () => {
 
@@ -482,7 +504,14 @@ const handleTouchEnd = (event) => {
 
           </div>
 
-          <div className='w-full  px-5 md:px-10 pt-10 flex relative content-container'>
+          <motion.div 
+            className='w-full  px-5 md:px-10 pt-10 flex relative content-container'
+            // variants={pageVariants2} // Link the pageVariants to this motion.div
+            // initial="initial"
+            // animate="animate"
+            // exit="exit"
+
+          >
             <div ref={sidebarRef}>
                 <SideBar handler={handelSolutionIndex} linkColor={navColor} />
             </div>
@@ -490,7 +519,7 @@ const handleTouchEnd = (event) => {
 
               <Outlet />
        
-          </div>
+          </motion.div>
         </motion.div>
     
     </>

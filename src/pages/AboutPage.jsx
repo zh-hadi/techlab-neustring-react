@@ -7,6 +7,7 @@ import PlayButton from '../assets/Play.svg'
 import { useLocation } from 'react-router-dom'
 
 import { useDataContext } from '../contexts/DataContext'
+import { useImages } from "../contexts/ImageContext";
 
 
 const motionLeft = {
@@ -41,11 +42,12 @@ const motionRight = {
 
 
 const AboutPage = () => {
+  const Images = useImages();
 
   const staticData = {
     title: 'Discover how NeuString revolutionizes wholesale roaming. ',
     description: 'Since our inception, NeuString has empowered leading mobile operators across the globe, achieving:',
-    image: '',
+    image: Image.aboutPage,
     video: 'https://www.youtube.com/embed/DqR9K6-p07E',
     services: [ 
       'Real-time insights with CO-Pilot that drive informed decisions', 
@@ -85,7 +87,7 @@ const AboutPage = () => {
         animate='animate'
         variants={motionLeft}
       >
-        <img className='h-full' src={HeroImage} alt="" onLoad={() => setIsLoaded(true)}/>
+        <img className='h-full' src={Images.aboutPage} alt="" onLoad={() => setIsLoaded(true)}/>
       </motion.div>
       <motion.div 
         className='items-center flex-1 w-full md:w-3/5 flex justify-end'

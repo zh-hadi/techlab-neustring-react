@@ -20,6 +20,7 @@ import { PagesColorProvider } from './contexts/PagesColorContext'
 import { SolutionPageProvider} from './contexts/SolutionPageContext'
 import { ScrollContext } from './contexts/ScrollContext'
 import { DataContextProvider, useDataContext } from './contexts/DataContext';
+import { ImageProvider } from  './contexts/ImageContext';
 
 import ScrollPageHandler from "./components/ScrollPageHandler";
 
@@ -68,27 +69,30 @@ const App = () => {
 
 
   return (
-      <DataContextProvider>
 
-    <SolutionPageProvider>
+    <ImageProvider>
+        <DataContextProvider>
 
+      <SolutionPageProvider>
+
+                  
+                    <PagesColorProvider>
+                        <ColorContext.Provider key="111" value={{ color, setColor }}>
+
+
+                    <AnimatePresence mode="wait">
+                            <RouterProvider router={router}>
+                        
+                              </RouterProvider>
+                    </AnimatePresence>
+
+                        </ColorContext.Provider>
+                        
+                    </PagesColorProvider>
                 
-                  <PagesColorProvider>
-                      <ColorContext.Provider key="111" value={{ color, setColor }}>
-
-
-                  <AnimatePresence mode="wait">
-                          <RouterProvider router={router}>
-                      
-                            </RouterProvider>
-                  </AnimatePresence>
-
-                      </ColorContext.Provider>
-                      
-                  </PagesColorProvider>
-               
-                </SolutionPageProvider>
-      </DataContextProvider>
+                  </SolutionPageProvider>
+        </DataContextProvider>
+    </ImageProvider>
                 
 
   
