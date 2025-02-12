@@ -13,7 +13,7 @@ const ExecutingBlob = () => {
         "M320 80C300 -5 230 20 200 40C140 0 80 20 40 60C0 100 -30 140 10 170C60 200 110 220 40 260C-30 300 70 460 200 360C300 280 350 320 390 300C420 280 450 160 400 150C350 140 370 160 320 80Z",
       ],
       transition: {
-        duration: 5, // Total duration of the animation
+        duration: 3, // Total duration of the animation
         repeat: Infinity, // Loop the animation indefinitely
         repeatType: "reverse", // Reverses the motion back to the initial position
         ease: "easeInOut", // Smooth easing for both directions
