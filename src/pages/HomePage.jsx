@@ -38,7 +38,7 @@ const HomePage = () => {
 
 
   return (
-    <div className='w-full flex  flex-col   items-center' id='home-page'>
+    <div className='z-0 w-full flex  flex-col   items-center' id='home-page'>
       <div className='flex flex-col justify-start md:justify-center items-center md:w-3/5 gap-5 flex-1'>
             <h1 className='text-3xl md:text-7xl  tracking-wide font-bold text-white text-center'>{ data.title }</h1>
             <p className='text-white opacity-90 text-center text-base'>{ data.description }</p>

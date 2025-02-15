@@ -57,6 +57,7 @@ html, body {
   height: calc(100vh); /* Full page height */
   overflow-y: scroll; /* Ensure vertical scrolling */
   -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on mobile devices */
+  z-index: 0;
 
   /* Hide scrollbar */
   scrollbar-width: none; /* For Firefox */
@@ -130,3 +131,8 @@ html, body {
   border-top-left-radius: 6px;
   box-shadow: -2px -2px #82BC34;
 } */
+
+
+.menu-container {
+  z-index: 10000;
+}

@@ -22,17 +22,17 @@ const Page5 = () => {
   return (
 
         <>
-    <div className='w-full md:w-4/5    mx-auto flex flex-col md:flex-row justify-between  relative pb-10 mb:pb-0' >
+    <div className='w-full md:w-4/5 h-full    mx-auto flex flex-col md:flex-row justify-between items-center  relative pb-10 mb:pb-0' >
 
 
       <motion.div 
-        className='flex-1 flex flex-col gap-5 items-start z-10'
+        className='flex-1 flex flex-col gap-5 items-center justify-center z-10'
       
         initial={{ opacity: 0, x: -300 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1.4 }}
       >
-        <div className='w-full md:w-2/3 mx-auto flex flex-col gap-5 items-start'>
+        <div className='w-full md:w-4/5 mx-auto flex flex-col gap-5 items-start'>
           <img className='size-24' src={PlaneIcon} alt="" />
           <h2 className='text-[#2870AE] text-2xl md:text-5xl font-bold'>{data.title}</h2>
           <p className='text-[#2870AE] text-sm md:text-base'>{data.description}</p>
@@ -127,7 +127,7 @@ const Page5 = () => {
 
     </div>
         <div 
-            className='hidden md:block w-[6px] h-[150px]  absolute -top-20 left-1/2 -translate-x-1/2 opacity-50 z-5' 
+            className='hidden md:block w-[6px] h-[150px]  absolute -top-20 left-1/2 -translate-x-1/2 opacity-50 z-[1000]' 
             style={{background: 'linear-gradient(360deg, rgba(255, 209, 148, 0) 0%, #70E1F5 100%)'}}
             >
 

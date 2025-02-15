@@ -9,7 +9,7 @@ const PageColorContext = createContext();
   useEffect(()=>{
     const color = [
       {page: 'home', color: 'bg-red-500', navColor: '#82BC34', headerColor: 'black', headerButton: '#ffffff'},
-      {page: 'about', color: 'linear-gradient(to right, #f3eee8 50%, #cbd7fd 50%), linear-gradient(90deg, #C9D6FF 50%, #E2E2E2 100%)', navColor: '#2A89DB', headerColor: 'black', headerButton: '#2870AE'},
+      {page: 'about', color: 'linear-gradient(to right, #f3eee8 50%, transparent 50%), linear-gradient(to right, #C9D6FF 50%, #E2E2E2 100%)', navColor: '#2A89DB', headerColor: 'black', headerButton: '#2870AE'},
       {page: 'community', color: '#F5F5F7', navColor: '#82BC34', headerColor: 'black', headerButton: '#2870AE'},
       {page: 'contact', color: 'linear-gradient(90deg, #43C6AC 0%, #F8FFAE 100%)', navColor: '#FFFFFF', headerColor: 'black', headerButton: '#2870AE'},
       {page: 'solution', pages: [

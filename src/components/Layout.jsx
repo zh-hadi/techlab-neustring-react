@@ -491,7 +491,7 @@ const handleTouchEnd = (event) => {
           transition={{ duration: 1, ease: "easeInOut" }}
 
         >
-          <div className="px-5 py-2 bg-gradient-to-r from-[rgba(255,255,255,0.4)] to-[rgba(255,255,255,0.2)] w-full md:w-3/5 mx-auto flex items-center justify-between rounded-lg z-10">
+          <div className="px-5 py-2 bg-gradient-to-r from-[rgba(255,255,255,0.4)] to-[rgba(255,255,255,0.2)] w-full md:w-3/5 mx-auto flex items-center justify-between rounded-lg -z-[1000]">
             <a href="/">
               <img className='w-[120px] md:w-[200px]' src={logo} alt="Logo" />
             </a>
@@ -505,7 +505,7 @@ const handleTouchEnd = (event) => {
           </div>
 
           <motion.div 
-            className='w-full  px-5 md:px-10 pt-10 flex relative content-container'
+            className='w-full  px-5 md:px-10 pt-10 flex relative content-container z-5'
             // variants={pageVariants2} // Link the pageVariants to this motion.div
             // initial="initial"
             // animate="animate"

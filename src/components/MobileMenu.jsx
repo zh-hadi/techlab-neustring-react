@@ -35,7 +35,7 @@ const MobileMenu = () => {
   };
 
   return (
-    <div className="relative md:hidden menu-container z-100">
+    <div className="relative md:hidden menu-container">
       {/* Burger Menu Button */}
       <button onClick={toggleMenu}>
         <svg
@@ -56,7 +56,7 @@ const MobileMenu = () => {
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute top-14 right-0 bg-white bg-opacity-95 text-sm shadow-sm rounded-md flex flex-col gap-4 px-10 py-3">
+        <div className="absolute top-14 right-0 bg-white bg-opacity-95 text-sm shadow-sm rounded-md flex flex-col gap-4 px-10 py-3 z-[10000]">
           <NavLink
             to="/home"
             className={({ isActive }) =>

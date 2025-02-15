@@ -27,17 +27,17 @@ const Page3 = () => {
 
 
   return (
-    <div className='w-full md:w-4/5    mx-auto flex flex-col md:flex-row justify-between  relative pb-10 mb:pb-0' >
+    <div className='w-full md:w-4/5 h-full    mx-auto flex flex-col md:flex-row justify-between items-center  relative pb-10 mb:pb-0' >
 
 
           <motion.div 
-             className='flex-1 flex flex-col gap-5 items-start z-10'
+             className='flex-1 flex flex-col items-center justify-center gap-5  z-10'
            
              initial={{ opacity: 0, x: -300 }}
              animate={{ opacity: 1, x: 0 }}
              transition={{ duration: 1.4 }}
            >
-             <div className='w-full md:w-2/3 mx-auto flex flex-col gap-5 items-start'>
+             <div className='w-full md:w-4/5 mx-auto flex flex-col gap-5 items-start'>
                <img className='size-24' src={PlaneIcon} alt="" />
                <h2 className='text-[#2870AE] text-2xl md:text-5xl font-bold'>{data.title}</h2>
                <p className='text-[#2870AE] text-sm md:text-base'>{data.description}</p>
@@ -81,7 +81,7 @@ const Page3 = () => {
                 <PlanBlob />
             </div>
             <div
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col p-5 md:p-10 justify-between w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px]"
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col p-5 md:py-20 justify-between w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px]"
               // style={{ width: '428px', height: '405px' }}
             >
 
