@@ -148,24 +148,24 @@ const Layout = () => {
 
     const routes = ["/home", "/about", "/solution", "/community", "/contact"];
 
-    const handleScreenClick = (e) => {
-      console.log(e);
-      if (sidebarRef.current && sidebarRef.current.contains(e.target)) {
-        console.log('side bar clicked'+ sidebarRef.current)
-        return; // Prevent navigation if the click is inside the sidebar
-      }
-      if(location.pathname === '/solution' && solIndex.solutionIndex < 6) {
-        console.log(solIndex.solutionIndex);
-        solIndex.setSolutionIndex(solIndex.solutionIndex + 1)
-        exit()
-      }else{
+    // const handleScreenClick = (e) => {
+    //   console.log(e);
+    //   if (sidebarRef.current && sidebarRef.current.contains(e.target)) {
+    //     console.log('side bar clicked'+ sidebarRef.current)
+    //     return; // Prevent navigation if the click is inside the sidebar
+    //   }
+    //   if(location.pathname === '/solution' && solIndex.solutionIndex < 6) {
+    //     console.log(solIndex.solutionIndex);
+    //     solIndex.setSolutionIndex(solIndex.solutionIndex + 1)
+    //     exit()
+    //   }else{
 
-        solIndex.setSolutionIndex(0)
-        const currentIndex = routes.findIndex((route) => route === location.pathname);
-        const nextIndex = (currentIndex + 1) % routes.length; 
-        navigate(routes[nextIndex]);
-      }
-    };
+    //     solIndex.setSolutionIndex(0)
+    //     const currentIndex = routes.findIndex((route) => route === location.pathname);
+    //     const nextIndex = (currentIndex + 1) % routes.length; 
+    //     navigate(routes[nextIndex]);
+    //   }
+    // };
 
     const sidebarRef = useRef(null);
 
@@ -471,7 +471,6 @@ const handleTouchEnd = (event) => {
 }
 
           
-    
         <motion.div
           // onClick={handleScreenClick}
           onWheel={handleWheel}
@@ -491,7 +490,7 @@ const handleTouchEnd = (event) => {
           transition={{ duration: 1, ease: "easeInOut" }}
 
         >
-          <div className="px-5 py-2 bg-gradient-to-r from-[rgba(255,255,255,0.4)] to-[rgba(255,255,255,0.2)] w-full md:w-3/5 mx-auto flex items-center justify-between rounded-lg -z-[1000]">
+          <div className="sticky px-5 py-2 bg-gradient-to-r from-[rgba(255,255,255,0.4)] to-[rgba(255,255,255,0.2)] w-full md:w-3/5 mx-auto flex items-center justify-between rounded-lg z-[1000]">
             <a href="/">
               <img className='w-[120px] md:w-[200px]' src={logo} alt="Logo" />
             </a>

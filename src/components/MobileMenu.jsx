@@ -35,7 +35,7 @@ const MobileMenu = () => {
   };
 
   return (
-    <div className="relative md:hidden menu-container">
+    <div className=" md:hidden menu-container z-[5000]">
       {/* Burger Menu Button */}
       <button onClick={toggleMenu}>
         <svg

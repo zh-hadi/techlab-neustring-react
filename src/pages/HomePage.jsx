@@ -53,12 +53,11 @@ const HomePage = () => {
 
         
             {/* mt-[100px] md:mt-[200px] */}
-        <div className='flex flex-col items-center pt-[50px] md:pt-[100px]'>
+      </div>
+        <div className='flex flex-col items-center pb-[40px] md:pb-[50px]'>
               <img src={mouseIcon} alt="" />
               <div className='text-white'>Scroll to view more</div>
         </div>
-      </div>
-
 
     </div>
   )

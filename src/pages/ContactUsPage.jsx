@@ -37,11 +37,12 @@ const ContactUsPage = () => {
    const apidata = useDataContext();
    const data = apidata?.apiData?.data?.contuctPage || staticData;
 
+  // console.log(data);
 
   return (
-    <div className='w-full md:w-3/5 mx-auto mb-[100px] md:pb-0 '>
+    <div className='w-full md:w-2/3 mx-auto  '>
       <div className='flex flex-col md:flex-row items-center justify-evenly'>
-        <div className=' flex flex-col items-center md:items-end text-center md:text-right gap-5'>
+        <div className=' flex flex-col items-center md:items-end text-center md:text-right gap-5 py-[50px]'>
           <h2 className='text-4xl leading-9 font-bold  text-transparent bg-clip-text bg-gradient-to-r from-[#0F314F]  to-[#226CAC]'>{data.title_1}</h2>
           <p className='text-[#0F314F] text-base'>{data.subtitle_1}</p>
           
@@ -61,7 +62,7 @@ const ContactUsPage = () => {
             alt="Phone Logo" 
           />
         </div>
-        <div className='flex flex-col items-center md:items-end text-center md:text-right gap-5'>
+        <div className='flex flex-col items-center md:items-start text-center md:text-left gap-5 py-[50px]'>
           <h2 className='text-4xl leading-9 font-bold  text-transparent bg-clip-text bg-gradient-to-r from-[#0F314F]  to-[#226CAC]'>{data.title_2}</h2>
           <p className='font-base text-[#0F314F]'>{data.subtitle_2}</p>
 
